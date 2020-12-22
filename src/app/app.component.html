@@ -1,0 +1,32 @@
+<ion-app>
+    <ion-split-pane contentId="my-content">
+        <ion-menu contentId="my-content">
+            <ion-header no-border>
+                <ion-toolbar class="ion-text-center" color="dark">
+                    <img alt="logo" height="120" [src]="global.logoBranco">
+                    <ion-title>Menu</ion-title>
+                </ion-toolbar>
+            </ion-header>
+
+            <ion-content>
+                <ion-list class="botoes-menu-sidebar">
+                    <ion-item lines="none" slot="start" *ngFor="let pagina of paginas" (click)="abrePagina(pagina)"
+                              class="linha-menu">
+                        <ion-icon slot="start" [ngStyle]="{'color':pagina.color}" [src]="pagina.src"
+                                  name="{{pagina.icone}}"></ion-icon>
+                        {{ pagina.titulo }}
+                    </ion-item>
+                    <ion-item lines="none" slot="start" (click)="presentConfirm(true)" class="linha-menu">
+                        <ion-icon slot="start" [ngStyle]="{'color':'red'}" name="exit"></ion-icon>
+                        Sair
+                    </ion-item>
+                </ion-list>
+            </ion-content>
+            <ion-footer class="ion-text-center">
+                Versão {{global.versao}}
+            </ion-footer>
+        </ion-menu>
+        <ion-router-outlet id="my-content" [swipeGesture]="true"></ion-router-outlet>
+    </ion-split-pane>
+</ion-app>
+<ng-http-loader [backgroundColor]="'#ff0000'"></ng-http-loader>

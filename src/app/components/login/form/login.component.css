@@ -1,0 +1,21 @@
+.logo-row {
+    width: 150px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+}
+
+ion-row {
+    align-items: center;
+    text-align: center;
+}
+
+.create-account {
+    color: #ee3631;
+    text-decoration: underline;
+    background: none;
+}
+
+.rodape {
+    margin: 0;
+}

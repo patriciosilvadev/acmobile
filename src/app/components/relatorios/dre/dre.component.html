@@ -1,0 +1,215 @@
+<ion-header>
+  <ion-toolbar color="danger">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>DRE (Lucro Bruto)</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div class="fixed">
+    <ion-toolbar *ngIf="global.usuario.clientes.length > 1"
+      class="negrito ion-text-center ion-no-padding tollbar-empresa noback">
+      <ion-select [interfaceOptions]="customActionSheetOptions" cancel-text="Voltar" [(ngModel)]="global.cnpj"
+        interface="action-sheet" (ngModelChange)="ionViewDidEnter()">
+        <ion-select-option *ngFor="let c of global.usuario.clientes" [value]="c.cnpj">
+          {{c.nomeFantasia.replace('(AC POSTO)', '')}}</ion-select-option>
+        <ion-select-option [value]="global.usuario.id">TODOS</ion-select-option>
+      </ion-select>
+    </ion-toolbar>
+    <div *ngIf="!lucro">
+      <ion-item class="noback">
+        <ion-label>Sem Lucro a Informar</ion-label>
+      </ion-item>
+    </div>
+    <div *ngIf="lucro">
+      <div class="area-filtro">
+        <ion-segment [(ngModel)]="defaultSegment" id="datafilter" value="15" color="danger">
+          <ion-segment-button value="15" (click)="filtroData(15)">
+            <ion-label>15 dias</ion-label>
+          </ion-segment-button>
+          <ion-segment-button value="30" (click)="filtroData(30)">
+            <ion-label>30 dias</ion-label>
+          </ion-segment-button>
+          <ion-segment-button (click)="filtroData('custom')">
+            <ion-label>{{mesEscolhido ? mesEscolhido : 'Mês' }}</ion-label>
+          </ion-segment-button>
+        </ion-segment>
+      </div>
+    </div>
+  </div>
+  <div class="corpo">
+    <ion-item lines="none" class="ion-text-center">
+      <ion-label class="subtitulo">{{dataInicio}}  à  {{dataFinal}}</ion-label>
+    </ion-item>
+    <ion-grid>
+      <ion-row>
+        <ion-card class="second-card">
+          <ion-row class="ion-justify-content-around card-row">
+            <ion-card button class="card-area" (click)="abrirModal(0, total.vendas, 'vendas')">
+              <div class="card-wrapper">
+                <div class="card-verde justify">
+                  <ion-icon name="arrow-down"></ion-icon>
+                </div>
+                <div class="card-body">
+                  <ion-grid class="grid-card">
+                    <ion-row class="center">
+                      <p class="title">Vendas</p>
+                    </ion-row>
+                    <ion-row class="center">
+                      <p class="content-verde negrito">
+                        {{total.vendas | currency: 'BRL': 'symbol':'1.2'}}
+                      </p>
+                    </ion-row>
+                  </ion-grid>
+                </div>
+              </div>
+            </ion-card>
+            <ion-card button class="card-area" (click)="abrirModal(1, total.custos, 'custos')">
+              <div class="card-wrapper">
+                <div class="card-vermelho justify">
+                  <ion-icon name="arrow-up"></ion-icon>
+                </div>
+                <div class="card-body">
+                  <ion-grid class="grid-card">
+                    <ion-row class="center">
+                      <p class="title">Custos</p>
+                    </ion-row>
+                    <ion-row class="center">
+                      <p class="content-vermelho negrito">
+                        {{total.custos | currency:'BRL': 'symbol':'1.2'}}
+                      </p>
+                    </ion-row>
+                  </ion-grid>
+                </div>
+              </div>
+            </ion-card>
+          </ion-row>
+          <div class="linha espacamento"></div>
+          <div *ngIf="isGroupShown('LUCRO')" class="detalhesOcc">
+            <ion-row class="head">
+              <ion-col size="3"></ion-col>
+              <ion-col size="4.5" class="ion-text-center">
+                <ion-icon color="danger" name="water"></ion-icon><br>
+                <ion-label class="comb">Combustíveis</ion-label>
+              </ion-col>
+              <ion-col size="4.5" class="ion-text-center">
+                <ion-icon color="primary" name="pricetags"></ion-icon><br>
+                <ion-label class="prod">Produtos</ion-label>
+              </ion-col>
+            </ion-row>
+            <ion-row class="tabela linhaBottom">
+              <ion-col size="3" class="ion-text-start">
+                <ion-label class="receita">Vendas</ion-label>
+              </ion-col>
+              <ion-col size="4.5" class="ion-text-center">
+                <ion-label class="valores">{{total.tVendaComb | currency: 'BRL': 'symbol': '1.2'}}
+                </ion-label>
+              </ion-col>
+              <ion-col size="4.5" class="ion-text-center">
+                <ion-label class="valores">{{total.tVendaProd | currency: 'BRL': 'symbol': '1.2'}}</ion-label>
+              </ion-col>
+            </ion-row>
+            <ion-row class="tabela linhaBottom">
+              <ion-col size="3" class="ion-text-start">
+                <ion-label class="custo">Custo</ion-label>
+              </ion-col>
+              <ion-col size="4.5" class="ion-text-center">
+                <ion-label class="valores">{{total.tCustoComb | currency: 'BRL': 'symbol': '1.2'}}</ion-label>
+              </ion-col>
+              <ion-col size="4.5" class="ion-text-center">
+                <ion-label class="valores">{{total.tCustoProd | currency: 'BRL': 'symbol': '1.2'}}</ion-label>
+              </ion-col>
+            </ion-row>
+            <ion-row class="tabela">
+              <ion-col size="3" class="ion-text-start">
+                <ion-label class="lucroBruto">Lucro</ion-label>
+              </ion-col>
+              <ion-col size="4.5" class="ion-text-center">
+                <ion-label class="valoresLucro">{{total.lucroComb | currency: 'BRL': 'symbol': '1.2'}}
+                </ion-label>
+              </ion-col>
+              <ion-col size="4.5" class="ion-text-center">
+                <ion-label class="valoresLucro">{{total.lucroProd | currency: 'BRL': 'symbol': '1.2'}}
+                </ion-label>
+              </ion-col>
+            </ion-row>
+          </div>
+          <div class="linha espacamento" *ngIf="isGroupShown('LUCRO')"></div>
+          <ion-row (click)="toggle('LUCRO')">
+            <ion-item lines="none" class="ion-no-padding ion-margin-horizontal">
+              <ion-icon name="{{isGroupShown('LUCRO') ? 'chevron-up' : 'chevron-down'}}" color="primary" slot="start">
+              </ion-icon>
+            </ion-item>
+            <ion-col>
+              <ion-row class="ion-justify-content-end">
+                <p class="negrito valorReais">
+                  Lucro Bruto: {{total.lucroBruto | currency:'BRL': 'symbol':'1.2'}}
+                </p>
+              </ion-row>
+              <ion-row class="ion-justify-content-end">
+                <p class="margemBruta">
+                  Margem Bruta: {{total.margemLucro | number:'1.2-2'}}%
+                </p>
+              </ion-row>
+            </ion-col>
+          </ion-row>
+        </ion-card>
+      </ion-row>
+      <ion-row class="ion-no-padding">
+        <ion-card class="second-card">
+          <ion-row class="ion-justify-content-around card-row2">
+            <ion-card button class="card-area" (click)="abrirModal(2, total.tCredito, 'receitas')">
+              <div class="card-wrapper">
+                <div class="border-dre-verde"></div>
+                <div class="card-body">
+                  <ion-grid class="grid-card">
+                    <ion-row class="center">
+                      <p class="title">Outras Receitas</p>
+                    </ion-row>
+                    <ion-row class="center">
+                      <p class="content-verde negrito">
+                        {{ total.tCredito | currency: 'BRL': 'symbol': '1.2' }}
+                      </p>
+                    </ion-row>
+                  </ion-grid>
+                </div>
+              </div>
+            </ion-card>
+            <ion-card button class="card-area" (click)="abrirModal(3, total.tDespesa, 'despesas')">
+              <div class="card-wrapper">
+                <div class="border-dre-vermelho"></div>
+                <div class="card-body">
+                  <ion-grid class="grid-card">
+                    <ion-row class="center">
+                      <p class="title">Despesas</p>
+                    </ion-row>
+                    <ion-row class="center">
+                      <p class="content-vermelho negrito">
+                        {{ total.tDespesa | currency: 'BRL': 'symbol': '1.2' }}
+                      </p>
+                    </ion-row>
+                  </ion-grid>
+                </div>
+              </div>
+            </ion-card>
+          </ion-row>
+          <div class="linha espacamento"></div>
+          <ion-row>
+            <ion-col>
+              <ion-row class="ion-justify-content-end">
+                <p class="negrito lucroLiquido" [ngClass]="getColorResultado(total.lucroLiquido)">
+                  Resultado Líquido: {{total.lucroLiquido | currency:'BRL': 'symbol':'1.2'}}
+                </p>
+              </ion-row>
+            </ion-col>
+          </ion-row>
+        </ion-card>
+      </ion-row>
+    </ion-grid>
+    <ion-item lines="none" class="ion-text-center negrito ion-margin-bottom">
+      <ion-label>Lucro Líquido Semanal</ion-label>
+    </ion-item>
+    <canvas #barChart></canvas>
+  </div>
+</ion-content>

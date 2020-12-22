@@ -1,0 +1,266 @@
+[
+  {
+    "cnpj": "15312559000124",
+    "data": "2017-11-18",
+    "turno": "1",
+    "estoque": [
+      {
+        "tanque": "1",
+        "combustivel": "GC",
+        "qtd": 10000
+      },
+      {
+        "tanque": "2",
+        "combustivel": "AC",
+        "qtd": 20000
+      },
+      {
+        "tanque": "3",
+        "combustivel": "DC",
+        "qtd": 30000
+      },
+      {
+        "tanque": "4",
+        "combustivel": "D10",
+        "qtd": 40000
+      }
+    ],
+    "movimentacao": [
+      {
+        "descricao": "Dinheiro",
+        "valor": 500,
+        "tipo": "CREDITO"
+      },
+      {
+        "descricao": "Cartão Crédito",
+        "valor": 2000,
+        "tipo": "CREDITO"
+      },
+      {
+        "descricao": "Cheque Pre",
+        "valor": 200,
+        "tipo": "CREDITO"
+      },
+      {
+        "descricao": "Despesas",
+        "valor": 300,
+        "tipo": "CREDITO"
+      },
+      {
+        "descricao": "GC",
+        "valor": 10000,
+        "unitario": 4.099,
+        "qtd": 7000,
+        "tipo": "DEBITO"
+      },
+      {
+        "descricao": "AC",
+        "valor": 5000,
+        "unitario": 2.899,
+        "qtd": 3000,
+        "tipo": "DEBITO"
+      },
+      {
+        "descricao": "DC",
+        "valor": 3000,
+        "unitario": 4.099,
+        "qtd": 2000,
+        "tipo": "DEBITO"
+      },
+      {
+        "descricao": "D10",
+        "valor": 8000,
+        "unitario": 4.299,
+        "qtd": 1000,
+        "tipo": "DEBITO"
+      },
+      {
+        "descricao": "Produtos",
+        "valor": 2500,
+        "qtd": 52,
+        "tipo": "DEBITO"
+      },
+      {
+        "descricao": "Adicional",
+        "valor": 150,
+        "tipo": "DEBITO"
+      }
+    ]
+  },
+  {
+    "cnpj": "15312559000124",
+    "data": "2017-11-18",
+    "turno": "2",
+    "estoque": [
+      {
+        "tanque": "1",
+        "combustivel": "GC",
+        "qtd": 1000
+      },
+      {
+        "tanque": "2",
+        "combustivel": "AC",
+        "qtd": 2000
+      },
+      {
+        "tanque": "3",
+        "combustivel": "DC",
+        "qtd": 3000
+      },
+      {
+        "tanque": "4",
+        "combustivel": "D10",
+        "qtd": 4000
+      }
+    ],
+    "movimentacao": [
+      {
+        "descricao": "Dinheiro",
+        "valor": 500,
+        "tipo": "CREDITO"
+      },
+      {
+        "descricao": "Cartão Crédito",
+        "valor": 2000,
+        "tipo": "CREDITO"
+      },
+      {
+        "descricao": "Cheque Pre",
+        "valor": 200,
+        "tipo": "CREDITO"
+      },
+      {
+        "descricao": "Despesas",
+        "valor": 300,
+        "tipo": "CREDITO"
+      },
+      {
+        "descricao": "GC",
+        "valor": 10000,
+        "unitario": 4.099,
+        "qtd": 7000,
+        "tipo": "DEBITO"
+      },
+      {
+        "descricao": "AC",
+        "valor": 5000,
+        "unitario": 2.899,
+        "qtd": 3000,
+        "tipo": "DEBITO"
+      },
+      {
+        "descricao": "DC",
+        "valor": 3000,
+        "unitario": 4.099,
+        "qtd": 2000,
+        "tipo": "DEBITO"
+      },
+      {
+        "descricao": "D10",
+        "valor": 8000,
+        "unitario": 4.299,
+        "qtd": 1000,
+        "tipo": "DEBITO"
+      },
+      {
+        "descricao": "Produtos",
+        "valor": 2500,
+        "qtd": 52,
+        "tipo": "DEBITO"
+      },
+      {
+        "descricao": "Adicional",
+        "valor": 150,
+        "tipo": "DEBITO"
+      }
+    ]
+  },
+  {
+    "cnpj": "15312559000124",
+    "data": "2017-11-18",
+    "turno": "3",
+    "estoque": [
+      {
+        "tanque": "1",
+        "combustivel": "GC",
+        "qtd": 15000
+      },
+      {
+        "tanque": "2",
+        "combustivel": "AC",
+        "qtd": 25000
+      },
+      {
+        "tanque": "3",
+        "combustivel": "DC",
+        "qtd": 35000
+      },
+      {
+        "tanque": "4",
+        "combustivel": "D10",
+        "qtd": 45000
+      }
+    ],
+    "movimentacao": [
+      {
+        "descricao": "Dinheiro",
+        "valor": 500,
+        "tipo": "CREDITO"
+      },
+      {
+        "descricao": "Cartão Crédito",
+        "valor": 2000,
+        "tipo": "CREDITO"
+      },
+      {
+        "descricao": "Cheque Pre",
+        "valor": 200,
+        "tipo": "CREDITO"
+      },
+      {
+        "descricao": "Despesas",
+        "valor": 300,
+        "tipo": "CREDITO"
+      },
+      {
+        "descricao": "GC",
+        "valor": 10000,
+        "unitario": 4.099,
+        "qtd": 7000,
+        "tipo": "DEBITO"
+      },
+      {
+        "descricao": "AC",
+        "valor": 5000,
+        "unitario": 2.899,
+        "qtd": 3000,
+        "tipo": "DEBITO"
+      },
+      {
+        "descricao": "DC",
+        "valor": 3000,
+        "unitario": 4.099,
+        "qtd": 2000,
+        "tipo": "DEBITO"
+      },
+      {
+        "descricao": "D10",
+        "valor": 8000,
+        "unitario": 4.299,
+        "qtd": 1000,
+        "tipo": "DEBITO"
+      },
+      {
+        "descricao": "Produtos",
+        "valor": 2500,
+        "qtd": 52,
+        "tipo": "DEBITO"
+      },
+      {
+        "descricao": "Adicional",
+        "valor": 150,
+        "tipo": "DEBITO"
+      }
+    ]
+  }
+]

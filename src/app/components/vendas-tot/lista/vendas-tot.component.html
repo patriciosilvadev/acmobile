@@ -1,0 +1,17 @@
+<ion-content>
+    <ion-item *ngIf="!dataGrafico">Sem Vendas Neste Caixa</ion-item>
+    <ion-card *ngIf="dataGrafico" class="main-card-vendas2">
+        <ion-card-title *ngIf="global.cnpj.length == 14" class="negrito titulo ion-text-center ion-padding-top">
+            {{global.fechamento}}</ion-card-title>
+        <ion-card-content class="ion-no-margin ion-no-padding">
+            <div class="center-chart">
+                <ngx-charts-advanced-pie-chart *ngIf="dataGrafico" [view]="[355, 200]" [results]="dataGrafico"
+                    label="Total Vendas" [valueFormatting]="formataValor" [percentageFormatting]="formataPercent">
+                </ngx-charts-advanced-pie-chart>
+            </div>
+        </ion-card-content>
+    </ion-card>
+    <ion-item lines="none" class="negrito">
+        <ion-label>*Valores Arredondados.</ion-label>
+    </ion-item>
+</ion-content>

@@ -1,0 +1,119 @@
+<ion-header>
+    <ion-toolbar color="danger">
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>AC-Mobile</ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <div class="fixed">
+        <img class="principal" [src]="global.logo" />
+        <ion-grid class="ion-no-padding">
+            <ion-row class="ion-no-padding">
+                <ion-col class="negrito ion-text-center ion-no-padding">
+                    <ion-select [disabled]="global.usuario.clientes.length == 1"
+                        [interfaceOptions]="customActionSheetOptions" cancel-text="Voltar" [(ngModel)]="global.cnpj"
+                        interface="action-sheet">
+                        <ion-select-option *ngFor="let c of global.usuario.clientes" [value]="c.cnpj">
+                            {{c.nomeFantasia.replace('(AC POSTO)', '')}}</ion-select-option>
+                    </ion-select>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </div>
+    <div class="corpo">
+        <ion-grid class="ion-text-center ion-text-capitalize" style="padding: 20px 10px">
+            <ion-row class="mb-10">
+                <ion-col size="6" class="esp-col">
+                    <div button class="btn-principal" (click)="abrePagina(paginas[0])">
+                        <div class="card-wrapper">
+                            <div class="card-vermelho">
+                                <div class="ico-wrapper">
+                                    <div class="ico-venda"></div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <span class="btn-label">VENDAS</span>
+                            </div>
+                        </div>
+                    </div>
+                </ion-col>
+                <ion-col size="6" class="esp-col">
+                    <div button class="btn-principal" (click)="abrePagina(paginas[1])">
+                        <div class="card-wrapper">
+                            <div class="card-vermelho">
+                                <div class="ico-wrapper">
+                                    <div class="ico-estoque"></div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <span class="btn-label">ESTOQUE</span>
+                            </div>
+                        </div>
+                    </div>
+                </ion-col>
+            </ion-row>
+            <ion-row class="mb-10">
+                <ion-col size="6" class="esp-col">
+                    <div button class="btn-principal" (click)="abrePagina(paginas[2])">
+                        <div class="card-wrapper">
+                            <div class="card-vermelho">
+                                <div class="ico-wrapper">
+                                    <div class="ico-caixa"></div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <span class="btn-label">CAIXA</span>
+                            </div>
+                        </div>
+                    </div>
+                </ion-col>
+                <ion-col size="6" class="esp-col">
+                    <div button class="btn-principal" (click)="abrePagina(paginas[6])">
+                        <div class="card-wrapper">
+                            <div class="card-vermelho">
+                                <div class="ico-wrapper">
+                                    <div class="ico-relatorio"></div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <span class="btn-label">DRE<br />(LUCRO BRUTO)</span>
+                            </div>
+                        </div>
+                    </div>
+                </ion-col>
+            </ion-row>
+            <ion-row class="mb-10">
+                <ion-col size="6" class="esp-col">
+                    <div button class="btn-principal" (click)="abrePagina(paginas[4])">
+                        <div class="card-wrapper">
+                            <div class="card-vermelho">
+                                <div class="ico-wrapper">
+                                    <div class="ico-alteraPreco"></div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <span class="btn-label">ALTERAR PREÇO</span>
+                            </div>
+                        </div>
+                    </div>
+                </ion-col>
+                <ion-col size="6" class="esp-col">
+                    <div button class="btn-principal" (click)="abrePagina(paginas[5])">
+                        <div class="card-wrapper">
+                            <div class="card-vermelho">
+                                <div class="ico-wrapper">
+                                    <div class="ico-financeiro"></div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <span class="btn-label">FINANCEIRO</span>
+                            </div>
+                        </div>
+                    </div>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </div>
+</ion-content>

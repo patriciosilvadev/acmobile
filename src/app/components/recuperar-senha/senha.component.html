@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar color="danger">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Nova Senha</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content padding>
+  <form #senhaForm="ngForm" autocomplete="off">
+    <ion-row class="account-form">
+      <ion-col>
+        <ion-list inset>
+
+          <ion-item>
+            <ion-input name="cnpj" [(ngModel)]="login" email placeholder="Email" type="email" required></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-input name="senha" [(ngModel)]="senha" placeholder="Nova Senha" type="password" required></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-input name="confirmacaoSenha" [(ngModel)]="confirmaSenha" placeholder="Confirme a senha"
+              type="password" required></ion-input>
+          </ion-item>
+
+        </ion-list>
+
+        <ion-button (click)="resetSenha()" expand="full" [disabled]="!senhaForm.form.valid">Enviar
+        </ion-button>
+
+      </ion-col>
+    </ion-row>
+  </form>
+</ion-content>

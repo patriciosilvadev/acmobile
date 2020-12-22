@@ -1,0 +1,50 @@
+<!--<ion-content>-->
+
+<!--    <ion-row>-->
+<!--        <ion-item (click)="selecionaData()" col-9>-->
+<!--            <ion-icon slot="start" name="calendar"></ion-icon>-->
+<!--            <ion-label stacked>Data Caixa:</ion-label>-->
+<!--            <ion-datetime [(ngModel)]="global.data" name="data"-->
+<!--                          displayFormat="DD/MM/YYYY"></ion-datetime>-->
+
+<!--        </ion-item>-->
+<!--        <ion-item col-3>-->
+<!--            <ion-label stacked>Turno:</ion-label>-->
+<!--            <ion-select (ionChange)="atualiza()" [(ngModel)]="global.turno" interface="popover">-->
+<!--                <ion-select-option *ngFor="let t of global.listTurnos" [value]="t">{{t}}</ion-select-option>-->
+<!--                <ion-select-option *ngIf="global.listTurnos && global.listTurnos.length > 1" value="Todos">Todos-->
+<!--                </ion-select-option>-->
+<!--            </ion-select>-->
+<!--        </ion-item>-->
+<!--    </ion-row>-->
+
+<!--    <ion-item *ngIf="!vendasHora">Sem Vendas Neste Caixa</ion-item>-->
+<!--    <ion-card *ngIf="vendasHora">-->
+<!--        <ion-card-content class="ion-no-padding">-->
+<!--            <google-chart [data]="lineChart"></google-chart>-->
+<!--        </ion-card-content>-->
+<!--    </ion-card>-->
+<!--    <ion-card *ngIf="vendasHora">-->
+<!--        <ion-card-content class="ion-no-padding">-->
+<!--            <ion-grid align="center">-->
+<!--                <ion-row class="negrito">-->
+<!--                    <ion-col col-4>Horas</ion-col>-->
+<!--                    <ion-col col-4>Valor Lts</ion-col>-->
+<!--                    <ion-col col-4>Valor Reais</ion-col>-->
+<!--                </ion-row>-->
+<!--                <ion-list>-->
+<!--                    <ion-row *ngFor="let hora of vendasHora" class="linha ion-no-margin ion-no-padding">-->
+<!--                        <ion-col col-4>{{hora.hora}}:00</ion-col>-->
+<!--                        <ion-col col-4>{{hora.valorLts | number: '1.2-2' }}</ion-col>-->
+<!--                        <ion-col col-4>{{hora.valorReais | currency:'BRL'}}</ion-col>-->
+<!--                    </ion-row>-->
+<!--                    <ion-row class="negrito linha">-->
+<!--                        <ion-col col-4>Total</ion-col>-->
+<!--                        <ion-col col-4>{{totalLts | number: '1.2-2'}}</ion-col>-->
+<!--                        <ion-col col-4>{{totalReais | currency:'BRL'}}</ion-col>-->
+<!--                    </ion-row>-->
+<!--                </ion-list>-->
+<!--            </ion-grid>-->
+<!--        </ion-card-content>-->
+<!--    </ion-card>-->
+<!--</ion-content>-->

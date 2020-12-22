@@ -1,0 +1,16 @@
+.titulo {
+  font-size: 15px;
+}
+
+ion-row {
+  padding: 5px 7px !important;
+}
+
+ion-col {
+  padding: 3px 0;
+}
+
+.result-totais ion-col {
+  font-size: 15px;
+  color: rgb(40, 40, 40);
+}

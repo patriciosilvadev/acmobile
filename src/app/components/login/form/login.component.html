@@ -1,0 +1,57 @@
+<ion-content style="--ion-background-color: #f4f4f4; padding: 0;">
+    <ion-card>
+        <ion-card-content>
+            <div class="ion-text-center">
+                <img class="logo-row" [src]="global.logo"/>
+            </div>
+            <form #loginForm="ngForm" autocomplete="off">
+                <ion-row>
+                    <ion-col>
+                        <ion-list class="ion-margin-bottom">
+                            <ion-item>
+                                <ion-icon slot="start" name="person"></ion-icon>
+                                <ion-input placeholder="Email" name="login" id="loginField" type="email" email
+                                           required [(ngModel)]="login"></ion-input>
+                            </ion-item>
+                            <ion-item *ngIf="login == 'suporte@autocomsistemas.com.br'">
+                                <ion-icon slot="start" name="person"></ion-icon>
+                                <ion-input placeholder="Cnpj" name="cnpj" id="cnpjield" [brmasker]="{mask:'00.000.000/0000-00',type : 'num', len:18}"
+                                           type="text" [(ngModel)]="cnpj"></ion-input>
+                            </ion-item>
+                            <ion-item>
+                                <ion-icon slot="start" name="key"></ion-icon>
+                                <ion-input placeholder="Senha" name="senha" id="passwordField" type="password" required
+                                           [(ngModel)]="senha"></ion-input>
+                            </ion-item>
+                        </ion-list>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col>
+                        <ion-button color="danger" expand="full" (click)="efetuaLogin()"
+                                    [disabled]="!loginForm.form.valid">
+                            Entrar
+                        </ion-button>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col>
+                        <button (click)="abre('registrar')" class="create-account">Criar uma Conta?</button>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col>
+                        <button (click)="abre('senha')" class="create-account">Esqueceu a Senha?</button>
+                    </ion-col>
+                </ion-row>
+            </form>
+        </ion-card-content>
+    </ion-card>
+    <ion-row>
+        <ion-col>
+            <p class="rodape">www.autocomsistemas.com.br</p>
+        </ion-col>
+    </ion-row>
+</ion-content>
+
+

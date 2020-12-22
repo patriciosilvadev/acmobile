@@ -1,0 +1,38 @@
+<ion-content>
+    <ion-item *ngIf="!vendasComb">Sem Vendas Neste Caixa</ion-item>
+    <ion-card *ngIf="vendasComb" class="main-card-vendas">
+        <ion-card-title *ngIf="global.cnpj.length == 14" class="negrito titulo ion-text-center ion-padding-top">
+            {{global.fechamento}}</ion-card-title>
+        <ion-card-title [ngClass]="global.cnpj.length == 14 ? '' : 'ion-padding-top'"
+            class="negrito titulo ion-text-center">Total: {{totalLts | number: '1.2-2'}} Lts
+            | {{totalReais | currency:'BRL'}}</ion-card-title>
+        <ion-card-content class="ion-no-padding">
+            <div class="center-chart">
+                <google-chart [data]="pieChart"></google-chart>
+            </div>
+        </ion-card-content>
+    </ion-card>
+    <ion-card *ngIf="vendasComb">
+        <ion-card-content class="ion-no-padding">
+            <ion-grid class="ion-no-padding">
+                <ion-row class="negrito table-head-red">
+                    <ion-col size="5">Descrição</ion-col>
+                    <ion-col size="3" class="ion-text-end">Litros</ion-col>
+                    <ion-col size="4" class="ion-text-end">Valor</ion-col>
+                </ion-row>
+                <ion-list class="ion-no-padding">
+                    <ion-row *ngFor="let comb of vendasComb" class="linha ion-no-margin hoverable-table">
+                        <ion-col size="5">{{comb.nome}}</ion-col>
+                        <ion-col size="3" class="ion-text-end">{{comb.valorLts | number:'1.2-2'}}</ion-col>
+                        <ion-col size="4" class="ion-text-end">{{comb.valorReais | currency:'BRL'}}</ion-col>
+                    </ion-row>
+                    <ion-row class="negrito linha result-totais">
+                        <ion-col size="5">Total</ion-col>
+                        <ion-col size="3" class="ion-text-end">{{totalLts | number: '1.2-2'}}</ion-col>
+                        <ion-col size="4" class="ion-text-end">{{totalReais | currency:'BRL'}}</ion-col>
+                    </ion-row>
+                </ion-list>
+            </ion-grid>
+        </ion-card-content>
+    </ion-card>
+</ion-content>

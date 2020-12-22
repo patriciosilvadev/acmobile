@@ -1,0 +1,86 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-buttons slot="start">
+      <ion-button class="botaoFecharModal ion-no-padding" (click)="closeModal()" fill="clear" expand="block">
+        <ion-icon slot="icon-only" name="arrow-back" color="light"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Custos</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-content>
+    <ion-item lines="none" class="ion-text-center">
+      <ion-label *ngIf="!mesEscolhido" class="tituloData">Últimos {{filtro}} dias</ion-label>
+      <ion-label *ngIf="mesEscolhido" class="tituloData">{{mesEscolhido}}</ion-label>
+    </ion-item>
+    <ion-item lines="none" class="ion-text-center">
+      <ion-label class="subtitulo">{{dataInicio}} à {{dataFinal}}</ion-label>
+    </ion-item>
+    <ion-card *ngIf="listaComb?.length > 0">
+      <ion-card-content class="ion-no-padding">
+        <ion-grid class="ion-no-padding">
+          <ion-row>
+            <ion-col size="12" class="ion-text-center">
+              <ion-label class="titulo-card">Combustíveis</ion-label>
+            </ion-col>
+          </ion-row>
+          <ion-row class="negrito table-head-red">
+            <ion-col size="4">Descrição</ion-col>
+            <ion-col size="2" class="ion-text-center">Lts</ion-col>
+            <ion-col size="2" class="ion-text-center">Médio</ion-col>
+            <ion-col size="4" class="ion-text-end">Custo Total</ion-col>
+          </ion-row>
+          <ion-list class="ion-no-padding">
+            <ion-row *ngFor="let comb of listaComb" class="linha ion-no-margin hoverable-table fs13">
+              <ion-col size="4">{{comb.descricao}}</ion-col>
+              <ion-col size="2" class="ion-text-center">{{comb.quantidade}}</ion-col>
+              <ion-col size="2" class="ion-text-center">{{comb.custoMedio | currency:'BRL'}}</ion-col>
+              <ion-col size="4" class="ion-text-end">{{comb.custoTotal | currency:'BRL'}}</ion-col>
+            </ion-row>
+            <ion-row class="negrito linha result-totais">
+              <ion-col size="3">Total</ion-col>
+              <ion-col size="5" class="ion-text-end">{{totalLitros}} litros</ion-col>
+              <ion-col size="4" class="ion-text-end">{{totalComb | currency:'BRL'}}</ion-col>
+            </ion-row>
+          </ion-list>
+        </ion-grid>
+      </ion-card-content>
+    </ion-card>
+    <ion-card *ngIf="listaProd?.length > 0">
+      <ion-card-content class="ion-no-padding">
+        <ion-grid class="ion-no-padding">
+          <ion-row>
+            <ion-col size="12" class="ion-text-center">
+              <ion-label class="titulo-card">Produtos</ion-label>
+            </ion-col>
+          </ion-row>
+          <ion-row class="negrito table-head-red">
+            <ion-col size="4">Descrição</ion-col>
+            <ion-col size="2" class="ion-text-center">Qtd</ion-col>
+            <ion-col size="3" class="ion-text-center">Médio</ion-col>
+            <ion-col size="3" class="ion-text-end">Custo Total</ion-col>
+          </ion-row>
+          <ion-list class="ion-no-padding">
+            <ion-row *ngFor="let prod of listaProd" class="linha ion-no-margin hoverable-table fs13">
+              <ion-col size="4">{{prod.descricao}}</ion-col>
+              <ion-col size="2" class="ion-text-center">{{prod.quantidade}}</ion-col>
+              <ion-col size="3" class="ion-text-center">{{prod.custoMedio | currency: 'BRL'}}</ion-col>
+              <ion-col size="3" class="ion-text-end">{{prod.custoTotal | currency:'BRL'}}</ion-col>
+            </ion-row>
+            <ion-row class="negrito linha result-totais">
+              <ion-col size="3">Total</ion-col>
+              <ion-col size="5" class="ion-text-end">{{totalQtd}} produtos</ion-col>
+              <ion-col size="4" class="ion-text-end">{{totalProd | currency:'BRL'}}</ion-col>
+            </ion-row>
+          </ion-list>
+        </ion-grid>
+      </ion-card-content>
+    </ion-card>
+    <ion-card class="cardTotal">
+      <div class="agruparr">
+        <ion-label color="primary">Total</ion-label>
+        <ion-label color="primary">{{totalGeral| currency: 'BRL'}}</ion-label>
+      </div>
+    </ion-card>
+  </ion-content>

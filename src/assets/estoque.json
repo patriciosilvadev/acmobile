@@ -1,0 +1,98 @@
+[
+  {
+    "cnpj": "15312559000124",
+    "data": "2017-11-16",
+    "turno": "1",
+    "tanque": "1",
+    "combustivel": "Gasolina Comum",
+    "qtd": 10000
+  },
+  {
+    "cnpj": "15312559000124",
+    "data": "2017-11-16",
+    "turno": "1",
+    "tanque": "2",
+    "combustivel": "Etanol Comum",
+    "qtd": 20000
+  },
+  {
+    "cnpj": "15312559000124",
+    "data": "2017-11-16",
+    "turno": "1",
+    "tanque": "3",
+    "combustivel": "Diesel Comum",
+    "qtd": 30000
+  },
+  {
+    "cnpj": "15312559000124",
+    "data": "2017-11-16",
+    "turno": "1",
+    "tanque": "4",
+    "combustivel": "Diesel S10",
+    "qtd": 40000
+  },
+  {
+    "cnpj": "15312559000124",
+    "data": "2017-11-17",
+    "turno": "1",
+    "tanque": "1",
+    "combustivel": "Gasolina Comum",
+    "qtd": 1000
+  },
+  {
+    "cnpj": "15312559000124",
+    "data": "2017-11-17",
+    "turno": "1",
+    "tanque": "2",
+    "combustivel": "Etanol Comum",
+    "qtd": 2000
+  },
+  {
+    "cnpj": "15312559000124",
+    "data": "2017-11-17",
+    "turno": "1",
+    "tanque": "3",
+    "combustivel": "Diesel Comum",
+    "qtd": 3000
+  },
+  {
+    "cnpj": "15312559000124",
+    "data": "2017-11-17",
+    "turno": "1",
+    "tanque": "4",
+    "combustivel": "Diesel S10",
+    "qtd": 4000
+  },
+  {
+    "cnpj": "15312559000124",
+    "data": "2017-11-17",
+    "turno": "2",
+    "tanque": "1",
+    "combustivel": "Gasolina Comum",
+    "qtd": 15000
+  },
+  {
+    "cnpj": "15312559000124",
+    "data": "2017-11-17",
+    "turno": "2",
+    "tanque": "2",
+    "combustivel": "Etanol Comum",
+    "qtd": 25000
+  },
+  {
+    "cnpj": "15312559000124",
+    "data": "2017-11-17",
+    "turno": "2",
+    "tanque": "3",
+    "combustivel": "Diesel Comum",
+    "qtd": 35000
+  },
+  {
+    "cnpj": "15312559000124",
+    "data": "2017-11-17",
+    "turno": "2",
+    "tanque": "4",
+    "combustivel": "Diesel S10",
+    "qtd": 45000
+  }
+]

@@ -1,0 +1,8 @@
+{
+  "name": "AC-Mobile",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular",
+  "id": "48bafe66"
+}

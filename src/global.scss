@@ -1,0 +1,287 @@
+/** Basic CSS for Ionic Apps */
+@import "~@ionic/angular/css/core.css";
+@import "~@ionic/angular/css/normalize.css";
+@import "~@ionic/angular/css/structure.css";
+@import "~@ionic/angular/css/typography.css";
+
+/** Optional CSS utilities that can be commented out */
+@import "~@ionic/angular/css/padding.css";
+@import "~@ionic/angular/css/float-elements.css";
+@import "~@ionic/angular/css/text-alignment.css";
+@import "~@ionic/angular/css/text-transformation.css";
+@import "~@ionic/angular/css/flex-utils.css";
+
+* {
+  font-family: "Lato", sans-serif !important;
+}
+
+.li-ionic4-datePicker {
+  .modal-wrapper {
+    height: 470px;
+    max-height: 100%;
+    width: 312px;
+    --ion-color-primary: red; // This Variable used for the change of colour ion-datepicker only.
+    --ion-color-primary-tint: rgb(
+      214,
+      153,
+      153
+    ); // This Variable changes the tint colour of background when click button.
+  }
+}
+
+.li-ionic4-datePicker {
+  ion-footer {
+    height: 70px !important;
+  }
+}
+
+.ios .sc-ion-input-ios {
+  padding: 0 !important;
+}
+
+.ios ion-item.filtroAltera {
+  ion-select {
+    padding: 7px 0 !important;
+  }
+
+  ion-label {
+    margin: 0 !important;
+  }
+}
+
+:host{
+  .ios div.areaFiltro {
+    ion-segment-button{
+      min-height: 40px !important;
+    }
+  }
+}
+
+.truncate{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+ion-header .botaoFecharModal {
+  width: fit-content;
+  font-size: 16px;
+}
+
+ion-icon {
+  font-size: 25px;
+}
+
+.negrito {
+  font-weight: bold !important;
+}
+
+.noback {
+  --background: transparent !important;
+}
+
+.linha {
+  border-top: 1px solid #dedede;
+  font-size: 14px;
+}
+
+.titulo-card {
+  font-size: 20px;
+  margin-top: 8px;
+}
+
+.rodape-card {
+  font-size: 14px;
+  padding: 10px;
+}
+
+.total {
+  font-size: 16px;
+}
+
+.lateral {
+  --ion-background-color: white;
+  width: 100%;
+  text-align: left;
+  margin-left: 40px;
+}
+
+.toolbar-background {
+  --ion-background-color: #d5021a;
+}
+
+.tollbar-empresa {
+  --min-height: 4% !important;
+}
+
+.toolbar-title-md {
+  color: white;
+}
+
+.bar-button-default-md {
+  color: white;
+}
+
+.center-chart {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+// MUDA O ICONE DO ION-SELECT
+ion-select::part(icon) {
+  display: none !important;
+}
+
+ion-select::part(text) {
+  background-image: url("./assets/image/chevron-down.svg");
+  background-position: right;
+  background-repeat: no-repeat;
+  background-size: 15px 15px;
+  margin-right: 12px;
+}
+
+/* TOP WRAPPER  */
+.top-wrapper {
+  position: absolute;
+  width: 100%;
+  height: auto;
+}
+
+/* COMPONENTES DE INFORMACOES IMPORTANTES */
+ion-item {
+  --min-height: 28px;
+}
+
+ion-card.card-area {
+  box-shadow: none;
+  min-width: 150px;
+  margin: 0 !important;
+  background: transparent !important;
+}
+
+ion-card.card-area .card-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+ion-grid.grid-card {
+  padding: 5px 0;
+}
+
+.card-azul {
+  width: 25%;
+  padding: 5px;
+  height: fit-content;
+  background-color: var(--ion-color-primary);
+  color: white;
+  border-radius: 50%;
+}
+
+.card-vermelho {
+  width: 25%;
+  padding: 5px;
+  height: fit-content;
+  background-color: var(--ion-color-danger);
+  color: white;
+  border-radius: 50%;
+}
+
+.card-verde {
+  width: 25%;
+  padding: 5px;
+  height: fit-content;
+  background-color: green;
+  color: white;
+  border-radius: 50%;
+}
+
+.card-laranja {
+  width: 25%;
+  padding: 5px;
+  height: fit-content;
+  background-color: chocolate;
+  color: white;
+  border-radius: 50%;
+}
+
+.card-body {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.card-body .center {
+  justify-content: start;
+}
+
+.justify {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-area ion-icon {
+  font-size: 24px;
+}
+
+/* PROPS DA GRID INTERNA DOS CARDS */
+.card-body ion-row p.title {
+  font-size: 14px;
+  color: #8b8b8b;
+  margin: 5px 0 2px 7%;
+}
+
+.card-body ion-row p.content-vermelho {
+  font-size: 14px;
+  color: var(--ion-color-danger);
+  margin: 2px 0 5px 8%;
+}
+
+.card-body ion-row p.content-verde {
+  font-size: 14px;
+  color: darkgreen;
+  margin: 2px 0 5px 8%;
+}
+
+.card-body ion-row p.content-azul {
+  font-size: 14px;
+  color: var(--ion-color-primary);
+  margin: 2px 0 5px 8%;
+}
+
+.card-body ion-row p.content-laranja {
+  font-size: 14px;
+  color: chocolate;
+  margin: 2px 0 5px 8%;
+}
+
+.linha-caixa {
+  border-top: 1.5px solid #b8b8b8;
+}
+
+//cor diferente em cada linha da tabela
+.hoverable-table{
+  color: rgb(40, 40, 40) !important;
+}
+
+.hoverable-table:nth-child(2n){
+  background: rgb(240, 240, 240);
+}
+
+.fs13{
+  font-size: 13px;
+}
+
+.table-head-green{
+  background-color: green;
+  color: white;
+}
+
+.table-head-red{
+  background-color: var(--ion-color-danger);
+  color: white;
+}

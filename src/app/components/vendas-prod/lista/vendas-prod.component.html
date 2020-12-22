@@ -1,0 +1,78 @@
+<ion-content>
+    <div *ngIf="!existeVendas" class="ion-text-center no-vendas">
+        <ion-label>Sem vendas neste caixa</ion-label>
+    </div>
+    <div *ngIf="existeVendas" class="info-text">
+        <div *ngIf="global.cnpj.length == 14" class="negrito titulo ion-text-center ion-no-padding">
+            <p>{{global.fechamento}}</p>
+        </div>
+        <div class="negrito ttl ion-text-center ion-no-padding">
+            <p>Total: {{totalReais | currency:'BRL'}}</p>
+        </div>
+    </div>
+    <div *ngIf="existeVendas" style="height: fit-content;" class="vendasProd">
+        <div class="center-chart">
+            <ngx-charts-number-card *ngIf="dataGrafico" [view]="[355, (dataGrafico.length * 50 ) + 100 ]"
+                [results]="dataGrafico" [cardColor]="'rgb(244,244,244)'" [valueFormatting]="formataValor"
+                [labelFormatting]="formataLabel" [innerPadding]="10" (select)="toggleGroup($event.name)">
+            </ngx-charts-number-card>
+        </div>
+    </div>
+    <div class="corp">
+        <ion-card>
+            <ion-card-header class="ion-text-center table-head-red">
+                <ion-card-title color="white" class="negrito">Detalhamento</ion-card-title>
+            </ion-card-header>
+            <ion-card-content class="ion-no-padding ion-no-margin">
+                <ion-row *ngFor="let grupo of vendasGrupo" lines="none" class="linha">
+                    <!-- Toggle Button -->
+                    <ion-item class="item-title section" lines="none" (click)="toggleGroup(grupo.nome)">
+                        <ion-icon style="margin-right: 10px;" slot="start"
+                            name="{{isGroupShown(grupo.nome) ? 'chevron-up' : 'chevron-down'}}">
+                        </ion-icon>
+                        <div class="separa">
+                            <ion-label>{{grupo.nome | titlecase }}</ion-label>
+                            <ion-label class="valor">{{grupo.totalReais |
+                                currency:'BRL' }}
+                            </ion-label>
+                        </div>
+                    </ion-item>
+                    <div *ngIf="isGroupShown(grupo.nome)" class="ion-no-padding" style="width: 100%">
+                        <ion-list class="ion-no-padding">
+                            <ion-row class="table-row">
+                                <ion-col size="2">
+                                    <ion-item lines="none" class="ion-no-padding">
+                                        <ion-label class="ion-no-margin">Qtd</ion-label>
+                                    </ion-item>
+                                </ion-col>
+                                <ion-col size="6">
+                                    <ion-item lines="none" class="ion-no-padding ion-text-start">
+                                        <ion-label class="ion-no-margin">Descrição</ion-label>
+                                    </ion-item>
+                                </ion-col>
+                                <ion-col size="4">
+                                    <ion-item lines="none" class="ion-no-padding ion-text-end">
+                                        <ion-label class="ion-no-margin">Valor</ion-label>
+                                    </ion-item>
+                                </ion-col>
+                            </ion-row>
+                            <ion-row *ngFor="let item of grupo.vendas" class="linha hoverable-table fs13 table-row">
+                                <ion-col size="2">
+                                    {{item.quantidade}}
+                                </ion-col>
+                                <ion-col size="6" class="ion-text-start">
+                                    {{item.descricao}}
+                                </ion-col>
+                                <ion-col size="4" class="ion-text-end">
+                                    {{item.total | currency:'BRL'}}
+                                </ion-col>
+                            </ion-row>
+                        </ion-list>
+                    </div>
+                    <div [id]="'x'+grupo.nome"></div>
+                </ion-row>
+                <div class="linha"></div>
+            </ion-card-content>
+        </ion-card>
+    </div>
+</ion-content>

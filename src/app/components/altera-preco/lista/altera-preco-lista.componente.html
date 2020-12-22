@@ -1,0 +1,87 @@
+<ion-header>
+    <ion-toolbar color="danger">
+        <ion-buttons slot="start">
+            <ion-back-button></ion-back-button>
+        </ion-buttons>
+        <ion-title>Lista alteração de Preço</ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <div class="fixed">
+        <ion-toolbar *ngIf="global.usuario.clientes.length > 1"
+            class="negrito ion-text-center ion-no-padding tollbar-empresa">
+            <ion-select [interfaceOptions]="customActionSheetOptions" cancel-text="Voltar" [(ngModel)]="global.cnpj"
+                interface="action-sheet" (ngModelChange)="ionViewDidEnter()">
+                <ion-select-option *ngFor="let c of global.usuario.clientes" [value]="c.cnpj">
+                    {{c.nomeFantasia.replace('(AC POSTO)', '')}}</ion-select-option>
+                <!--            <ion-select-option [value]="global.usuario.id">TODOS</ion-select-option>-->
+            </ion-select>
+        </ion-toolbar>
+        <ion-item class="filtroAltera" lines="none">
+            <ion-label position="stacked">Filtro</ion-label>
+            <ion-select [(ngModel)]="filtro" (ionChange)="filtraStatus()" interface="action-sheet">
+                <ion-select-option value="SUCESSO">Alterações Efetuadas</ion-select-option>
+                <ion-select-option value="CANCELADO">Alterações Canceladas</ion-select-option>
+                <ion-select-option value="PENDENTE">Alterações Pendentes</ion-select-option>
+            </ion-select>
+        </ion-item>
+    </div>
+    <div class="corpo">
+        <div *ngIf="!listaAlteracaoPreco || listaAlteracaoPreco.length === 0" class="ion-text-center ion-padding">
+            <p style="font-size: 20px; font-weight: bold;">Sem agendamentos</p>
+        </div>
+        <ion-card>
+            <ion-card-content class="ion-no-padding ion-no-margin">
+                <ion-list class="accordion-list ion-no-padding">
+                    <ion-row *ngFor="let a of listaAlteracaoPreco ; let i=index" lines="none" class="linha">
+                        <!-- Toggle Button -->
+                        <ion-item lines="none" (click)="toggleGroup(i)"
+                            [ngClass]="isGroupShown(i) ? 'section-active' : 'section'">
+                            <ion-icon slot="start" name="{{isGroupShown(i) ? 'arrow-down' : 'arrow-forward'}}">
+                            </ion-icon>
+                            <ion-label>{{a.data | date : 'dd/MM/yyy HH:mm':"+0000"}} - <span
+                                    [style.color]="getStatus(a.status, i)">{{a.status}}</span></ion-label>
+                        </ion-item>
+                        <div *ngIf="isGroupShown(i)" class="ion-no-padding" style="width: 100%">
+                            <ion-grid *ngIf="a.alteracoes">
+                                <ion-row class="negrito">
+                                    <ion-col size="2">Bico</ion-col>
+                                    <ion-col size="7">Combustível</ion-col>
+                                    <ion-col size="3">Preço</ion-col>
+                                </ion-row>
+                                <ion-list>
+                                    <ion-row *ngFor="let b of a.alteracoes" class="linha ion-no-margin ion-no-padding">
+                                        <ion-col size="2">{{b.numero}}</ion-col>
+                                        <ion-col size="7">{{b.combustivel}}</ion-col>
+                                        <ion-col size="3">{{getPreco(b)}}</ion-col>
+                                    </ion-row>
+                                </ion-list>
+                            </ion-grid>
+                            <ion-item *ngIf="a.frentistaConfirmacao"
+                                class="linha ion-no-margin ion-no-padding ion-margin-start">
+                                <label cla>Usuário {{a.frentistaConfirmacao}} visualizou em
+                                    {{a.dataConfirmacao | date : 'dd/MM/yyy HH:mm'}}</label>
+                            </ion-item>
+                            <ion-item *ngIf="a.frentistaAlteracao"
+                                class="linha ion-no-margin ion-no-padding ion-margin-start">
+                                <label>Usuário {{a.frentistaConfirmacao}}
+                                    {{a.status === 'CANCELADO' ? ' Cancelou' : ' Alterou'}}
+                                    em {{a.dataConclusao | date : 'dd/MM/yyy HH:mm'}}</label>
+                            </ion-item>
+                            <ion-button *ngIf="a.status === 'PENDENTE'" color="danger" fill="clear" expand="block"
+                                (click)="presentConfirm(a)">
+                                <ion-icon name="close" slot="start"></ion-icon>
+                                Cancelar Agendamento
+                            </ion-button>
+                        </div>
+                    </ion-row>
+                </ion-list>
+            </ion-card-content>
+        </ion-card>
+    </div>
+</ion-content>
+<ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button color="danger" (click)="criarNovo()">
+        <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+</ion-fab>

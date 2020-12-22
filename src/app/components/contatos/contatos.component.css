@@ -1,0 +1,28 @@
+.botoesContato {
+  font-size: 16px;
+  padding: 0;
+  width: 100%;
+  text-align: left;
+  --background: white;
+  --color: black ;
+}
+
+ion-icon {
+  padding: 10px;
+}
+
+.border-primary{
+  border-left: 7px solid var(--ion-color-primary);
+}
+
+.border-dark{
+  border-left: 7px solid var(--ion-color-dark);
+}
+
+.border-danger{
+  border-left: 7px solid var(--ion-color-danger);
+}
+
+.linha{
+  margin: 0 10px !important;
+}

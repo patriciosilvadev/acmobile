@@ -1,0 +1,55 @@
+<ion-header>
+    <ion-toolbar color="danger">
+        <ion-buttons slot="start">
+            <ion-back-button></ion-back-button>
+        </ion-buttons>
+        <ion-title>Estoque Tanques</ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <div class="top-wrapper">
+        <div class="fixed">
+            <ion-toolbar *ngIf="global.usuario.clientes.length > 1"
+                class="negrito ion-text-center ion-no-padding tollbar-empresa">
+                <ion-select [interfaceOptions]="customActionSheetOptions" cancel-text="Voltar" [(ngModel)]="global.cnpj"
+                    interface="action-sheet" (ngModelChange)="ionViewDidEnter()">
+                    <ion-select-option *ngFor="let c of global.usuario.clientes" [value]="c.cnpj">
+                        {{c.nomeFantasia.replace('(AC POSTO)', '')}}</ion-select-option>
+                </ion-select>
+            </ion-toolbar>
+            <div *ngIf="!estoque" class="centerText">
+                <ion-label>Sem Estoque a Informar.</ion-label>
+            </div>
+            <div *ngIf="dataHora" class="centerText">
+                <ion-label>Atualizado em: {{dataHora | date : 'dd/MM/yyyy HH:mm': '+0000'}}
+                </ion-label>
+            </div>
+        </div>
+    </div>
+    <div class="corpo">
+        <div class="area-cards" *ngIf="estoque">
+            <ion-card class="est-card" *ngFor="let est of estoque" [ngClass]="getClass(est) ">
+                <div class="wrap">
+                    <ion-label class="texto tnq">
+                        <h3>TQ {{est.tanque}}</h3>
+                    </ion-label>
+                </div>
+                <div class="wrap">
+                    <ion-label class="texto titulo">
+                        <h3>{{getComb(est)}}</h3>
+                    </ion-label>
+                </div>
+                <div class="tanque-wrapper">
+                    <div id="{{ est.elementId }}" class="info-tanque"></div>
+                </div>
+                <div class="wrap">
+                    <ion-label class="texto litros">
+                        <h3>
+                            {{est.qtd }} Litros
+                        </h3>
+                    </ion-label>
+                </div>
+            </ion-card>
+        </div>
+    </div>
+</ion-content>

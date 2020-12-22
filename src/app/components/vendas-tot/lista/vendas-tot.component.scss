@@ -1,0 +1,59 @@
+:host ::ng-deep {
+
+  .titulo {
+    font-size: 15px;
+  }
+
+  .btn-troca {
+    --background: white;
+    --color: grey;
+    --padding-end: 1px;
+    --padding-start: 1px;
+    margin-top: 70%;
+  }
+
+  .accordion-list {
+    /*background: color($ colors, light);*/
+    height: 100%;
+  }
+
+  .section {
+    --background: #fff;
+    width: 100%;
+    color: #000;
+  }
+
+  .section-active {
+    --background: red;
+    width: 100%;
+    color: #fff;
+  }
+
+  .tollbar-empresa {
+    --min-height: 4% !important;
+  }
+
+  .advanced-pie-legend .legend-items-container .legend-items .legend-item {
+    margin-right: 5px;
+  }
+
+  .advanced-pie-legend .legend-items-container .legend-items .legend-item .item-value {
+    font-size: 18px !important;
+    margin-left: 11px;
+    line-height: 1em !important;
+    margin-top: 0 !important;
+  }
+
+  .advanced-pie-legend .legend-items-container .legend-items .legend-item .item-label {
+    font-size: 17px !important;
+    opacity: 0.7;
+    margin-left: 11px;
+    margin-top: 5px !important;
+    line-height: 1em !important;
+  }
+
+  .advanced-pie-legend .legend-items-container .legend-items .legend-item .item-percent {
+    font-size: 0 !important;
+  }
+
+}

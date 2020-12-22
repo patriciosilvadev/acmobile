@@ -1,0 +1,160 @@
+<ion-header>
+    <ion-toolbar color="danger">
+        <ion-buttons slot="start">
+            <ion-back-button></ion-back-button>
+        </ion-buttons>
+        <ion-title>Resultado Caixa</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div class="fixed">
+        <ion-toolbar *ngIf="global.usuario.clientes.length > 1"
+            class="negrito noback ion-text-center ion-no-padding tollbar-empresa">
+            <ion-select [interfaceOptions]="customActionSheetOptions" cancel-text="Voltar" [(ngModel)]="global.cnpj"
+                interface="action-sheet" (ngModelChange)="ionViewDidEnter()">
+                <ion-select-option *ngFor="let c of global.usuario.clientes" [value]="c.cnpj">
+                    {{c.nomeFantasia.replace('(AC POSTO)', '')}}</ion-select-option>
+                <ion-select-option [value]="global.usuario.id">TODOS</ion-select-option>
+            </ion-select>
+        </ion-toolbar>
+        <ion-row class="ion-align-items-stretch" style="padding: 0 10px;">
+            <ion-col size="9">
+                <ion-item lines="none" class="ion-text-center noback ion-no-padding">
+                    <ion-icon slot="start" name="calendar"></ion-icon>
+                    <ion-label position="stacked">Data Caixa:</ion-label>
+                    <ion-input readonly [(ngModel)]="data" [liIonic4Datepicker]="datePickerObj"
+                        (ionChange)="atualizaData()" class="ion-no-padding" style="margin-left: -10px;">
+                    </ion-input>
+                </ion-item>
+            </ion-col>
+            <ion-col>
+                <ion-item lines="none" class="noback ion-no-padding">
+                    <ion-label position="stacked">Turno</ion-label>
+                    <ion-select mode="ios" (ionChange)="atualiza()" [(ngModel)]="turno" interface="popover"
+                        class="ion-no-padding" style="padding-top: 5px;">
+                        <ion-select-option *ngFor="let t of listTurnos" [value]="t">{{t}}</ion-select-option>
+                        <ion-select-option *ngIf="listTurnos && listTurnos.length > 1" value="Todos">Todos
+                        </ion-select-option>
+                    </ion-select>
+                </ion-item>
+            </ion-col>
+        </ion-row>
+        <ion-item lines="none" class="ion-text-center ion-no-padding noback" *ngIf="!caixa">
+            <ion-label>Sem Vendas Neste Caixa</ion-label>
+        </ion-item>
+        <div *ngIf="caixa">
+            <ion-item *ngIf="caixa.fechamento"
+                class="noback negrito titulo-fecha ion-text-center ion-no-padding ion-no-margin" lines="none">
+                <ion-label class="ion-no-margin">{{caixa.fechamento}}</ion-label>
+            </ion-item>
+            <ion-item class="negrito noback titulo ion-text-center" [ngClass]="resultado()" lines="none">
+                <ion-label class="ion-no-margin">
+                    {{ (resultado() === 'verde' ? 'Sobrou: ' : 'Faltou: ') + ((caixa.totalEntradas - caixa.totalVendas)
+                    | currency:'BRL')}}
+                </ion-label>
+            </ion-item>
+            <ion-row class="noback ion-justify-content-around">
+                <ion-card class="card-area noback">
+                    <div class="card-wrapper">
+                        <div class="card-vermelho justify">
+                            <ion-icon name="arrow-up"></ion-icon>
+                        </div>
+                        <div class="card-body">
+                            <ion-grid class="grid-card">
+                                <ion-row class="center">
+                                    <p class="title">Vendas</p>
+                                </ion-row>
+                                <ion-row class="center">
+                                    <p class="content-vermelho negrito">
+                                        {{caixa.totalVendas | currency:'BRL'}}
+                                    </p>
+                                </ion-row>
+                            </ion-grid>
+                        </div>
+                    </div>
+                </ion-card>
+                <ion-card class="card-area noback">
+                    <div class="card-wrapper">
+                        <div class="card-verde justify">
+                            <ion-icon name="arrow-down"></ion-icon>
+                        </div>
+                        <div class="card-body">
+                            <ion-grid class="grid-card">
+                                <ion-row class="center">
+                                    <p class="title">Recebimentos</p>
+                                </ion-row>
+                                <ion-row class="center">
+                                    <p class="content-verde negrito">
+                                        {{caixa.totalEntradas | currency:'BRL'}}
+                                    </p>
+                                </ion-row>
+                            </ion-grid>
+                        </div>
+                    </div>
+                </ion-card>
+            </ion-row>
+        </div>
+    </div>
+    <div class="corpo">
+        <div *ngIf="caixa && caixa.itensLancamentoCaixa">
+            <ion-item lines="none" class="ion-text-center negrito">
+                <ion-label class="detalhamento">Detalhamento</ion-label>
+            </ion-item>
+            <ion-card>
+                <ion-card-header class="ion-text-center table-head-red">
+                    <ion-card-title color="white" class="negrito">Vendas</ion-card-title>
+                </ion-card-header>
+                <ion-card-content class="ion-no-padding ion-no-margin">
+                    <ion-row *ngFor="let d of debitos" class="linha hoverable-table table-row">
+                        <ion-col size="8" class="text-table">
+                            {{d.descricao}}
+                        </ion-col>
+                        <ion-col size="4" class="text-table ion-text-end">
+                            {{d.valor | currency:'BRL'}}
+                        </ion-col>
+                    </ion-row>
+                </ion-card-content>
+            </ion-card>
+            <ion-card>
+                <ion-card-header class="ion-text-center table-head-green">
+                    <ion-card-title color="white" class="negrito">Recebimentos</ion-card-title>
+                </ion-card-header>
+                <ion-card-content class="ion-no-padding ion-no-margin">
+                    <ion-row *ngFor="let itens of lancamentos" lines="none" class="linha">
+                        <!-- Toggle Button -->
+                        <ion-item class="item-title section" lines="none" (click)="toggleGroup(itens.nome)">
+                            <ion-icon style="margin-right: 10px;" slot="start"
+                                name="{{isGroupShown(itens.nome) ? 'chevron-up' : 'chevron-down'}}">
+                            </ion-icon>
+                            <div class="separa">
+                                <ion-label>{{itens.nome | titlecase }}</ion-label>
+                                <ion-label class="valor">{{itens.total |
+                                    currency:'BRL' }}
+                                </ion-label>
+                            </div>
+                        </ion-item>
+                        <div *ngIf="isGroupShown(itens.nome)" class="ion-no-padding" style="width: 100%">
+                            <ion-list class="ion-no-padding">
+                                <ion-row *ngFor="let item of itens.lancamentos"
+                                    class="linha hoverable-table2 fs13 acc-row">
+                                    <ion-col size="8">
+                                        {{item.descricao | titlecase }}
+                                    </ion-col>
+                                    <ion-col size="4" class="ion-text-end">
+                                        {{item.valor | currency:'BRL'}}
+                                    </ion-col>
+                                </ion-row>
+                            </ion-list>
+                        </div>
+                        <div [id]="'X'+itens.nome.toUpperCase()"></div>
+                    </ion-row>
+                    <div class="linha"></div>
+                </ion-card-content>
+            </ion-card>
+        </div>
+        <ion-item lines="none" class="negrito" style="font-size: 15px">
+            <ion-label>*Informações apenas de caixas fechados.</ion-label>
+        </ion-item>
+    </div>
+</ion-content>

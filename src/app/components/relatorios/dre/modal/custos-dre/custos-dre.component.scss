@@ -1,0 +1,45 @@
+.titulo-card {
+  font-size: 20px !important;
+  color: var(--ion-color-danger);
+  font-weight: bold;
+}
+
+ion-row {
+  padding: 5px 7px !important;
+}
+
+ion-col {
+  padding: 3px 0;
+}
+
+.agruparr {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  font-weight: bold;
+  font-size: 19px;
+}
+
+.result-totais ion-col {
+  color: rgb(40, 40, 40);
+  font-size: 14px;
+}
+
+ion-item ion-label.tituloData {
+  font-size: 20px !important;
+  padding-top: 10px;
+}
+
+ion-item ion-label.subtitulo {
+  font-size: 12px !important;
+  padding-top: 0;
+}
+
+.tituloData,
+.subtitulo {
+  margin: 0 !important;
+}
+
+.cardTotal {
+  padding: 10px;
+}

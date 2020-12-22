@@ -1,0 +1,8 @@
+/.idea/
+/AcMobile.iml
+/node_modules/
+/platforms/
+/plugins/
+/www/
+/package-lock.json
+/resources/android/

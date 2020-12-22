@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "394851818755",
+    "firebase_url": "https://acmobile-572eb.firebaseio.com",
+    "project_id": "acmobile-572eb",
+    "storage_bucket": "acmobile-572eb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:394851818755:android:220b1bc840ae547c34dd36",
+        "android_client_info": {
+          "package_name": "br.com.autocom.ac_mobile"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "394851818755-pkn4h2lg2mba5j9pfed8iku9lus65mo4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDxmbu7Kp7w0fdQS4HevnkBlmywUgCqaSg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "394851818755-pkn4h2lg2mba5j9pfed8iku9lus65mo4.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "394851818755-5nsfah880417sfvaeb42j8muo7cq9tgf.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "br.com.autocom.acmobile"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

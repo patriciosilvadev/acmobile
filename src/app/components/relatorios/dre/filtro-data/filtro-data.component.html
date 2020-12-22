@@ -1,0 +1,4 @@
+<ion-list>
+  <ion-list-header>Selecione o mês/ano</ion-list-header>
+  <ion-item button *ngFor="let m of mesAno; let i = index" (click)="alteraData(i, m)">{{m}}</ion-item>
+</ion-list>

@@ -1,0 +1,54 @@
+.accordion-list {
+  /*background: color($ colors, light);*/
+  height: 100%;
+}
+
+.section {
+  --background: #fff;
+  width: 100%;
+  color: #000;
+}
+
+.section-active {
+  --background: var(--ion-color-danger);
+  width: 100%;
+  color: #fff;
+}
+
+.titulo {
+  font-size: 18px;
+}
+
+.tollbar-empresa {
+  --min-height: 4% !important;
+}
+
+/* CARD INFORMACOES MAIOR */
+.card-body ion-row p.content-maior {
+  font-size: 17px !important;
+}
+
+ion-card.card-maior {
+  min-width: 175px !important;
+}
+
+/* ELEMENTOS FIXOS NA TELA */
+.fixed {
+  width: 100%;
+  height: 190px;
+  position: fixed;
+  background: linear-gradient(180deg, #ffffff 0%, rgba(240, 240, 240, 0.4) 100%),
+    #eeeeee !important;
+  padding-bottom: 8px;
+  margin-bottom: 8px;
+  box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2),
+    0 4px 4px 0px rgba(0, 0, 0, 0.14), 0 1px 10px 0px rgba(0, 0, 0, 0.12);
+  border-radius: 0 0 25px 25px;
+  z-index: 888;
+}
+
+.corpo {
+  position: relative;
+  top: 200px;
+}
+

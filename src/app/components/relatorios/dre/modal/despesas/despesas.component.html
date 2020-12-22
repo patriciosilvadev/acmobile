@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-buttons slot="start">
+      <ion-button class="botaoFecharModal ion-no-padding" (click)="closeModal()" fill="clear" expand="block">
+        <ion-icon slot="icon-only" name="arrow-back" color="light"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Despesas</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-item lines="none" class="ion-text-center">
+    <ion-label *ngIf="!mesEscolhido" class="tituloDespesa">Últimos {{filtro}} dias</ion-label>
+    <ion-label *ngIf="mesEscolhido" class="tituloDespesa">{{mesEscolhido}}</ion-label>
+  </ion-item>
+  <ion-item lines="none" class="ion-text-center">
+    <ion-label class="subtitulo">{{dataInicio}} à {{dataFinal}}</ion-label>
+  </ion-item>
+  <ion-card *ngIf="listaDespesas" class="card-despesas">
+    <ion-card-content>
+      <ion-grid class="ion-no-padding">
+        <ion-row class="negrito table-head-red">
+          <ion-col size="6">Descrição</ion-col>
+          <ion-col size="3" class="ion-text-center">Data</ion-col>
+          <ion-col size="3" class="ion-text-end">Valor</ion-col>
+        </ion-row>
+        <ion-list class="ion-no-padding">
+          <ion-row *ngFor="let desp of listaDespesas" class="linha ion-no-margin hoverable-table fs13">
+            <ion-col size="6">{{desp.descricao}}</ion-col>
+            <ion-col size="3" class="ion-text-center">{{desp.data}}</ion-col>
+            <ion-col size="3" class="ion-text-end">{{desp.valor | currency:'BRL'}}</ion-col>
+          </ion-row>
+        </ion-list>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+  <div class="valortotal fixed">
+    <div class="card-res-content negrito">
+      <div>
+        <h3>Total</h3>
+      </div>
+      <div>
+        <h3>{{ totalGeral | currency: "BRL" }}</h3>
+      </div>
+    </div>
+  </div>
+</ion-content>

@@ -1,0 +1,47 @@
+<ion-header>
+    <ion-toolbar color="danger">
+        <ion-buttons slot="start">
+            <ion-back-button></ion-back-button>
+        </ion-buttons>
+        <ion-title>Contatos</ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <ion-card class="border-primary">
+        <ion-card-header padding="5px" class="negrito">Horário Comercial</ion-card-header>
+        <ion-card-content class="ion-no-padding">
+            <ion-item lines="none" slot="start" class="botoesContato linha" (click)="whats(62981910639)">
+                <ion-icon [ngStyle]="{'color':'darkgreen'}" name="logo-whatsapp"></ion-icon>
+                (62) 98191-0639
+            </ion-item>
+            <ion-item lines="none" slot="start" class="botoesContato linha " (click)="whats(62994795847)">
+                <ion-icon [ngStyle]="{'color':'darkgreen'}" name="logo-whatsapp"></ion-icon>
+                (62) 99479-5847
+            </ion-item>
+            <ion-item lines="none" slot="start" class="botoesContato linha" (click)="whats(62996536902)">
+                <ion-icon [ngStyle]="{'color':'darkgreen'}" name="logo-whatsapp"></ion-icon>
+                (62) 99653-6902
+            </ion-item>
+        </ion-card-content>
+    </ion-card>
+    <ion-card class="ion-no-padding border-danger">
+        <ion-card-header padding="5px" class="negrito">Plantão Sistema</ion-card-header>
+        <ion-card-content class="ion-no-padding">
+            <ion-item lines="none" slot="start" class="botoesContato linha" (click)="whats(62981910639)">
+                <ion-icon [ngStyle]="{'color':'darkgreen'}" name="logo-whatsapp"></ion-icon>
+                (62) 98191-0639
+            </ion-item>
+        </ion-card-content>
+    </ion-card>
+    <ion-card class="ion-no-padding border-dark">
+        <ion-card-header padding="5px" class="negrito">Plantão Automação Bombas</ion-card-header>
+        <ion-card-content class="ion-no-padding">
+            <ion-item lines="none" slot="start" class="botoesContato linha" (click)="whats(62994858517)">
+                <ion-icon [ngStyle]="{'color':'darkgreen'}" name="logo-whatsapp"></ion-icon>
+               (62) 99485-8517
+            </ion-item>
+        </ion-card-content>
+    </ion-card>
+</ion-content>
+
+

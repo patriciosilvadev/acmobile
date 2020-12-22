@@ -1,0 +1,152 @@
+<ion-header>
+    <ion-toolbar color="danger">
+        <ion-buttons slot="start">
+            <ion-back-button></ion-back-button>
+        </ion-buttons>
+        <ion-title>Lucro Combustíveis</ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <div class="fixed">
+        <ion-toolbar *ngIf="global.usuario.clientes.length > 1"
+            class="negrito ion-text-center ion-no-padding tollbar-empresa noback">
+            <ion-select [interfaceOptions]="customActionSheetOptions" cancel-text="Voltar" [(ngModel)]="global.cnpj"
+                interface="action-sheet" (ngModelChange)="ngAfterViewInit()">
+                <ion-select-option *ngFor="let c of global.usuario.clientes" [value]="c.cnpj">
+                    {{c.nomeFantasia.replace('(AC POSTO)', '')}}</ion-select-option>
+                <ion-select-option [value]="global.usuario.id">TODOS</ion-select-option>
+            </ion-select>
+        </ion-toolbar>
+        <div *ngIf="!lucro">
+            <ion-item class="noback">
+                <ion-label>Sem Lucro a Informar</ion-label>
+            </ion-item>
+        </div>
+        <div *ngIf="lucro">
+            <ion-item *ngIf="lucro" class="ion-text-center negrito noback ion-no-padding ion-no-margin" lines="none">
+                <ion-label style="font-size: 13px;" class="ion-no-padding ion-no-margin">Período:
+                    {{dataHora | date : 'dd/MM/yyyy'}} de 00:01
+                    à {{dataHora | date : 'HH:mm': '+0000'}}</ion-label>
+            </ion-item>
+            <ion-row class="ion-justify-content-around" style="padding: 0 5px;">
+                <ion-card class="card-area">
+                    <div class="card-wrapper">
+                        <div class="card-laranja justify">
+                            <ion-icon name="water"></ion-icon>
+                        </div>
+                        <div class="card-body">
+                            <ion-grid class="grid-card">
+                                <ion-row class="center">
+                                    <p class="title">Litros</p>
+                                </ion-row>
+                                <ion-row class="center">
+                                    <p class="content-laranja negrito">
+                                        {{totalLitros | number: '1.2-2'}} Lts
+                                    </p>
+                                </ion-row>
+                            </ion-grid>
+                        </div>
+                    </div>
+                </ion-card>
+                <ion-card class="card-area">
+                    <div class="card-wrapper">
+                        <div class="card-azul justify">
+                            <ion-icon name="logo-usd"></ion-icon>
+                        </div>
+                        <div class="card-body">
+                            <ion-grid class="grid-card">
+                                <ion-row class="center">
+                                    <p class="title">Valor</p>
+                                </ion-row>
+                                <ion-row class="center">
+                                    <p class="content-azul negrito">
+                                        {{totalVenda | currency:'BRL': 'symbol':'1.2'}}
+                                    </p>
+                                </ion-row>
+                            </ion-grid>
+                        </div>
+                    </div>
+                </ion-card>
+            </ion-row>
+            <ion-row class="ion-justify-content-center" style="padding: 0 5px;">
+                <ion-card class="card-area card-maior">
+                    <div class="card-wrapper">
+                        <div class="card-verde justify">
+                            <ion-icon name="trending-up"></ion-icon>
+                        </div>
+                        <div class="card-body">
+                            <ion-grid class="grid-card">
+                                <ion-row class="center">
+                                    <p class="title">Lucro Bruto</p>
+                                </ion-row>
+                                <ion-row class="center">
+                                    <p class="content-verde content-maior negrito">
+                                        {{totalReais | currency:'BRL': 'symbol':'1.2'}}
+                                    </p>
+                                </ion-row>
+                            </ion-grid>
+                        </div>
+                    </div>
+                </ion-card>
+            </ion-row>
+        </div>
+    </div>
+    <div class="corpo">
+        <div class="center-chart">
+            <ngx-charts-number-card *ngIf="lucro" [view]="[375, (dataChart.length * 60 ) + 100 ]" [results]="dataChart"
+                [cardColor]="'rgb(244,244,244)'" [customColors]="customColors" [valueFormatting]="formataValor"
+                [labelFormatting]="formataLabel" [innerPadding]="5" (select)="toggleGroup($event.name)">
+            </ngx-charts-number-card>
+        </div>
+        <ion-card *ngIf="lucro" class="sec-card-prod">
+            <div class="card-wrapper-det">
+                <div class="card-vermelho-det"></div>
+                <div class="card-body-det">
+                    <ion-card-header class="ion-text-center">
+                        <ion-card-title class="negrito vermelho">Detalhamento</ion-card-title>
+                    </ion-card-header>
+                    <ion-card-content class="ion-no-padding ion-no-margin">
+                        <ion-list class="accordion-list ion-no-padding">
+                            <ion-row *ngFor="let est of lucro" lines="none" class="linha">
+                                <!-- Toggle Button -->
+                                <ion-item lines="none" (click)="toggleGroup(est.combustivel)"
+                                    [ngClass]="isGroupShown(est.combustivel) ? 'section-active' : 'section'">
+                                    <ion-icon slot="start" name="arrow-forward" *ngIf="!isGroupShown(est.combustivel)">
+                                    </ion-icon>
+                                    <ion-icon slot="start" name="arrow-down" *ngIf="isGroupShown(est.combustivel)">
+                                    </ion-icon>
+                                    <ion-label>{{ getComb(est.combustivel)}}</ion-label>
+                                </ion-item>
+                                <div *ngIf="isGroupShown(est.combustivel)" class="ion-no-padding" style="width: 100%">
+                                    <ion-item lines="none">
+                                        <ion-label>Total Litros Vendidos: {{est.litros | number}} Lts</ion-label>
+                                    </ion-item>
+                                    <ion-item lines="none">
+                                        <ion-label>Preço Custo : {{est.pCusto | currency:'BRL' : 'symbol':'1.2-4'}}
+                                        </ion-label>
+                                    </ion-item>
+                                    <ion-item lines="none">
+                                        <ion-label>Preço Venda : {{est.pVenda | currency:'BRL' : 'symbol':'1.2-4'}}
+                                        </ion-label>
+                                    </ion-item>
+                                    <ion-item lines="none">
+                                        <ion-label>Lucro Unitário: {{est.dif | currency:'BRL' : 'symbol':'1.2-4'}} / Litro
+                                        </ion-label>
+                                    </ion-item>
+                                    <ion-item lines="none">
+                                        <ion-label>Margem de Lucro : {{est.porcentagem | number}}%</ion-label>
+                                    </ion-item>
+                                    <ion-item class="negrito" lines="none">
+                                        <ion-label>Total Lucro Bruto: {{est.reais | currency:'BRL' : 'symbol':'1.2-4'}}
+                                        </ion-label>
+                                    </ion-item>
+                                </div>
+                                <div [id]="'x'+est.combustivel"></div>
+                            </ion-row>
+                        </ion-list>
+                    </ion-card-content>
+                </div>
+            </div>
+        </ion-card>
+    </div>
+</ion-content>

@@ -1,0 +1,208 @@
+/* CARD INFORMACOES MAIOR */
+ion-card.second-card{
+  width: 100%;
+}
+
+.card-row{
+  padding: 5px 0 0 20px;
+}
+
+.card-row2{
+  padding: 15px 0 0 30px;
+}
+/* ELEMENTOS FIXOS NA TELA */
+.fixed {
+  width: 100%;
+  height: 87px;
+  position: fixed;
+  background: linear-gradient(180deg, #ffffff 0%, rgba(240, 240, 240, 0.4) 100%),
+    #eeeeee !important;
+  padding-bottom: 8px;
+  margin-bottom: 8px;
+  box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2),
+    0 4px 4px 0px rgba(0, 0, 0, 0.14), 0 1px 10px 0px rgba(0, 0, 0, 0.12);
+  z-index: 888;
+}
+
+.corpo {
+  position: relative;
+  top: 97px;
+}
+
+ion-item ion-label.subtitulo {
+  font-size: 12px !important;
+  padding-top: 0;
+}
+
+
+/* CARDS DE DETALHAMENTO */
+.card-cinza-dre {
+  border-left: 7px solid rgb(70, 70, 70);
+  width: 100% !important;
+}
+
+.head ion-icon {
+  font-size: 20px !important;
+}
+
+.head ion-label {
+  font-size: 14px !important;
+  font-weight: bold;
+}
+
+.head ion-label .comb {
+  color: var(--ion-color-danger);
+}
+
+.head ion-label .prod {
+  color: var(--ion-color-primary);
+}
+
+.head .lines,
+.tabela .lines {
+  border-left: 2px solid #ccc;
+}
+
+.tabela .receita {
+  color: darkgreen;
+  font-weight: bold;
+}
+
+.tabela .custo {
+  color: var(--ion-color-danger);
+  font-weight: bold;
+}
+
+.tabela .lucroBruto {
+  color: var(--ion-color-primary);
+  font-weight: bold;
+}
+
+.tabela .valores {
+  font-size: 13px !important;
+}
+
+.tabela .valoresLucro {
+  font-size: 14px !important;
+  font-weight: bold;
+}
+
+.linhaBottom {
+  border-bottom: 1px solid #ccc;
+}
+
+p.valorReais {
+  font-size: 16px !important;
+  text-align: center;
+  padding: 0;
+  color: var(--ion-color-primary);
+  margin: 3px 5px !important;
+}
+
+p.margemBruta {
+  font-size: 13px !important;
+  margin: 3px 5px !important;
+}
+
+p.lucroLiquido{
+  font-size: 17px;
+  padding: 0;
+  margin: 3px 5px !important;
+}
+
+p.lucroVerde{
+  color: green;
+}
+
+p.lucroRed{
+  color: var(--ion-color-danger);
+}
+
+.espacamento{
+  margin: 10px 15px 5px 15px;
+}
+
+.detalhesOcc{
+  padding: 5px 25px !important;
+}
+
+.border-dre-verde{
+  width: 5px;
+  height: 40px;
+  background-color: green;
+  position: relative;
+}
+
+.border-dre-vermelho{
+  background-color: var(--ion-color-danger);
+  width: 5px;
+  position: relative;
+  height: 40px;
+}
+
+ion-card.border-azul {
+  margin: 5px;
+  border-bottom: 7px solid  var(--ion-color-primary);
+}
+
+.card-wrapper {
+  display: flex;
+  flex-direction: row;
+}
+
+.card-body {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.card-body-lucro {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+.card-body .center {
+  justify-content: start;
+}
+
+.justify {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-vermelho ion-icon,
+.card-verde ion-icon {
+  font-size: 24px;
+}
+
+/* PROPS DA GRID INTERNA DOS CARDS */
+ion-row p {
+  margin: 5px 0 5px 10px;
+}
+
+ion-row p.title {
+  font-size: 16px;
+  color: #8b8b8b;
+  margin: 5px 0 5px 8%;
+}
+
+ion-row p.content-vermelho-dre {
+  font-size: 17px;
+  color: var(--ion-color-danger);
+  margin: 5px 0 5px 8%;
+}
+
+ion-row p.content-verde-dre {
+  font-size: 17px;
+  color: darkgreen;
+  margin: 5px 0 5px 8%;
+}
+
+ion-row p.content-azul-dre {
+  font-size: 18px;
+  color: var(--ion-color-primary);
+  margin: 5px 0 5px 8%;
+}
+

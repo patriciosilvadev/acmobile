@@ -1,0 +1,269 @@
+.principal {
+  display: block;
+  width: 30%;
+  margin: 15px auto;
+}
+
+/* BOTOES */
+/* .btn-principal {
+  --color: #2c2c2c;
+  --background: linear-gradient(
+      180deg,
+      #ffffff 0%,
+      rgba(240, 240, 240, 0.4) ; 100%
+    ),
+    #eeeeee;
+  height: 5.5em;
+  width: 5.5em;
+  --box-shadow: 2px 2px 6px rgba(90, 0, 0, 0.31);
+  --background-activated: #ff9292;
+  --background-focused: #ff9292;
+  --background-hover: #ff9292;
+  --border-radius: 15px;
+  --padding-start: 10px;
+  --padding-end: 10px;
+  margin: 0;
+}
+
+.btn-principal .button-native {
+  padding-right: 5px;
+  padding-left: 5px;
+}
+
+.btn-principal.activated {
+  --color: white;
+  --background: red;
+}
+
+.btn-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.lb-btn {
+  font-size: 14px;
+  font-weight: 700;
+  margin-top: 5px !important;
+  letter-spacing: normal;
+  text-transform: capitalize;
+} */
+
+/**********ESTILO DOS BOTOES DA TELA PRINCIPAL**********/
+.card-vermelho {
+  height: 70px;
+  border-radius: 50%;
+  width: 110px;
+  background-color: white;
+  box-shadow: 2px 2px 6px rgba(90, 0, 0, 0.31);
+  border-right: 2px solid #ed5555;
+}
+
+.btn-principal {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  height: 70px;
+  background: linear-gradient(180deg, #ffffff 0%, rgba(234, 234, 234, 0.4) 100%),
+    #eeeeee;
+  box-shadow: 2px 2px 6px rgba(90, 0, 0, 0.31);
+  justify-content: center;
+  border-radius: 50px;
+}
+
+.btn-principal:active {
+  transform: scale(1.06);
+  background-color: #ff92929f;
+}
+
+.resize {
+  transform: scale(0.8) !important;
+}
+.esp-col{
+  padding: 0 7px;
+}
+
+.card-wrapper {
+  display: flex;
+  flex-direction: row;
+}
+
+.card-body {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.ico-wrapper {
+  width: 100%;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.icon-button {
+  padding-left: 3px;
+  transform: scale(0.95);
+}
+
+span.btn-label {
+  padding: 5px;
+  color: black;
+  font-weight: bold;
+  font-size: 11px;
+  text-align: center;
+  width: 100%;
+  /* letter-spacing: 0; */
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+span.center-lb {
+  transform: translateX(-5%);
+}
+
+.mb-10 {
+  margin-bottom: 30px;
+  /* padding: 0 30px; */
+}
+
+ion-row.btn2linhas {
+  padding: 0 !important;
+  margin: 3px !important;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+.btn2linhas p {
+  margin: 0 !important;
+}
+
+.btn2linhas p:last-of-type {
+  margin-top: -4px !important;
+}
+
+/* ICONES HOME */
+/* .ico-venda {
+  width: 45px;
+  height: 45px;
+  background-image: url("../../../assets/image/icones-home/carrinho-de-compras2.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.ico-alteraPreco {
+  width: 55px;
+  height: 55px;
+  background-image: url("../../../assets/image/icones-home/moneychange.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.ico-caixa {
+  width: 45px;
+  height: 45px;
+  background-image: url("../../../assets/image/icones-home/cashier.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin-left: 5px;;
+}
+
+.ico-financeiro {
+  width: 45px;
+  height: 45px;
+  background-image: url("../../../assets/image/icones-home/saving.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.ico-lucro {
+  width: 50px;
+  height: 50px;
+  background-image: url("../../../assets/image/icones-home/crescimento.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.ico-estoque {
+  width: 50px;
+  height: 50px;
+  background-image: url("../../../assets/image/icones-home/estoque3.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.ico-relatorio {
+  width: 50px;
+  height: 50px;
+  background-image: url("../../../assets/image/icones-home/report.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin-left: 5px;
+} */
+
+/* ICONES HOME */
+.ico-venda {
+  width: 50px;
+  height: 50px;
+  background-image: url("../../../assets/image/ico-home/entradas-btn.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin-left: 5px;
+}
+
+.ico-alteraPreco {
+  width: 55px;
+  height: 55px;
+  background-image: url("../../../assets/image/ico-home/alterarPreco-btn.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin-left: 5px;
+}
+
+.ico-caixa {
+  width: 50px;
+  height: 50px;
+  background-image: url("../../../assets/image/ico-home/caixa-btn.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin-left: 5px;;
+}
+
+.ico-financeiro {
+  width: 50px;
+  height: 50px;
+  background-image: url("../../../assets/image/ico-home/sangria-btn.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin-left: 5px;
+}
+
+.ico-lucro {
+  width: 50px;
+  height: 50px;
+  background-image: url("../../../assets/image/ico-home/contasPagar-btn.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.ico-estoque {
+  width: 50px;
+  height: 50px;
+  background-image: url("../../../assets/image/ico-home/estoqueTanques-btn.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin-left: 5px;
+}
+
+.ico-relatorio {
+  width: 50px;
+  height: 50px;
+  background-image: url("../../../assets/image/ico-home/contasPagar-btn.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin-left: 5px;
+}

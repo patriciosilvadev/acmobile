@@ -1,0 +1,63 @@
+ion-item {
+  --inner-padding-end: 0px;
+  --padding-start: 0px;
+  --min-height: 28px !important;
+}
+
+ion-card-content {
+  padding: 0 !important;
+  width: 100%;
+}
+
+ion-col {
+  padding: 3px 0;
+}
+
+ion-row {
+  padding: 5px 7px !important;
+}
+
+ion-item ion-label.tituloDespesa{
+  font-size: 20px !important;
+  padding-top: 10px;
+}
+
+ion-item ion-label.subtitulo {
+  font-size: 12px !important;
+  padding-top: 0;
+}
+
+.tituloDespesa, .subtitulo{
+  margin: 0 !important;
+}
+
+.card-despesas{
+  margin-bottom: 60px;
+}
+
+/* CARD RESULTADO*/
+div.valortotal {
+  margin: 0;
+}
+
+div .card-res-content {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+div .card-res-content h3 {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 7px 0;
+  color: black;
+}
+
+.fixed{
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  padding: 5px 0;
+  background: white;
+  box-shadow: 0px 1px 5px 1px rgba(0,0,0,0.75);
+}

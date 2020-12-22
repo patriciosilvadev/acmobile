@@ -1,0 +1,99 @@
+ion-item {
+  --inner-padding-end: 0px;
+  --min-height: 28px;
+}
+
+.titulo {
+  font-size: 15px;
+}
+
+.btn-troca {
+  --background: white;
+  --color: grey;
+  --padding-end: 1px;
+  --padding-start: 1px;
+  margin-top: 70%;
+}
+
+.accordion-list {
+  /*background: color($ colors, light);*/
+  height: 100%;
+}
+
+.vendasProd {
+  width: 100%;
+  margin: 10px 0;
+}
+
+.info-text {
+  margin: 15px;
+}
+
+.info-text .ttl {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.info-text p {
+  margin: 10px 0 0 0;
+}
+
+.separa {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.section {
+  --background: #fff;
+  width: 100%;
+  color: #000;
+}
+
+.tollbar-empresa {
+  --min-height: 4% !important;
+}
+
+.no-vendas {
+  padding: 20px;
+  width: 100%;
+}
+
+ion-row.acc-row{
+  padding: 5px 15px !important;
+}
+
+ion-row.table-row{
+  padding: 5px 7px !important;
+}
+
+.separa .valor {
+  font-size: 14px;
+  font-weight: bold;
+  color: var(--ion-color-danger);
+  margin-right: 5px;
+}
+
+
+/* PROPS DA LISTAGEM */
+ion-row.lista {
+  margin: 5px 0;
+}
+
+ion-row.lista ion-col {
+  padding: 0 5px !important;
+}
+
+.totais {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin: 10px 0;
+  padding: 0 5px;
+}
+
+.totais p {
+  font-weight: bold;
+  font-size: 14px;
+  color: black;
+}

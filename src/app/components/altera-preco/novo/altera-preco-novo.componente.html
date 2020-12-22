@@ -1,0 +1,103 @@
+<ion-header>
+    <ion-toolbar color="danger">
+        <ion-buttons slot="start">
+            <ion-back-button></ion-back-button>
+        </ion-buttons>
+        <ion-title>Agendar alteração</ion-title>
+    </ion-toolbar>
+    <ion-toolbar *ngIf="global.usuario.clientes.length > 1"
+                 class="negrito ion-text-center ion-no-padding tollbar-empresa">
+        <ion-select [interfaceOptions]="customActionSheetOptions" cancel-text="Voltar" [(ngModel)]="global.cnpj"
+                    interface="action-sheet" (ngModelChange)="ionViewDidEnter()">
+            <ion-select-option *ngFor="let c of global.usuario.clientes"
+                               [value]="c.cnpj">{{c.nomeFantasia.replace('(AC POSTO)', '')}}</ion-select-option>
+            <ion-select-option [value]="global.usuario.id">TODOS</ion-select-option>
+        </ion-select>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <form autocomplete="off">
+        <ion-card>
+            <ion-card-content class="ion-no-padding">
+                <ion-item-group>
+                    <ion-item>
+                        <ion-label position="stacked" color="primary">Combustível:</ion-label>
+                        <ion-select mode="ios" [(ngModel)]="combustivelFiltro" name="ccombustivelFiltro" placeholder="Selecione"
+                                    interface="popover" (ngModelChange)="filtraBico()">
+                            <ion-select-option *ngFor="let c of listaCombustiveis" [value]="c">{{c}}</ion-select-option>
+                        </ion-select>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label position="stacked" color="primary">Bico:</ion-label>
+                        <ion-select mode="ios" [(ngModel)]="bico" class="select" placeholder="Selecione" interface="popover"
+                                    (ngModelChange)="selecionaBico()" name="cBIco" [disabled]="!combustivelFiltro">
+                            <ion-select-option *ngFor="let b of listaBicosFiltrados"
+                                               [value]="b">{{b.numero}}</ion-select-option>
+                            <ion-select-option value="Todos">Todos</ion-select-option>
+                        </ion-select>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label color="primary" position="stacked">Preço Atual:</ion-label>
+                        <ion-input placeholder="R$ 0,000"
+                                   [(ngModel)]="!alteracao.precoAtual ? undefined : 'R$ '+alteracao.precoAtual" readonly
+                                   [disabled]="!alteracao.bico" name="precoAtual"
+                                   [brmasker]="{money: true, decimal: '3'}"></ion-input>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label color="primary" position="stacked">Habilita segundo Preço(RFid)</ion-label>
+                        <ion-toggle [(ngModel)]="precoAvista" name="cprecoAvista" [disabled]="!alteracao.bico"></ion-toggle>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label color="primary" position="stacked">{{precoAvista ? 'Novo Preço Bomba:': 'Novo Preço:'}}</ion-label>
+                        <ion-input [(ngModel)]="alteracao.preco === undefined ? undefined : 'R$ '+ alteracao.preco"
+                                   placeholder="R$ 0,000" name="preco" [disabled]="!alteracao.bico"
+                                   [brmasker]="{money: true, decimal: '3'}" type="tel"></ion-input>
+                    </ion-item>
+                    <ion-item *ngIf="precoAvista">
+                        <ion-label color="primary" position="stacked">Novo Preço RFid:</ion-label>
+                        <ion-input
+                                [(ngModel)]="alteracao.precoAvista === undefined ? undefined : 'R$ '+ alteracao.precoAvista"
+                                placeholder="R$ 0,000" name="precoAvista" [disabled]="!alteracao.bico"
+                                [brmasker]="{money: true, decimal: '3'}" type="tel"></ion-input>
+                    </ion-item>
+                    <ion-button style="margin: 15px;" color="success" expand="block" (click)="adiciona()"
+                                [disabled]="!(precoAvista ? alteracao.preco?.length === 5 && alteracao.precoAvista?.length === 5 : alteracao.preco?.length === 5)"> Adicionar
+                        <ion-icon slot="start" name="add"></ion-icon>
+                    </ion-button>
+
+                </ion-item-group>
+            </ion-card-content>
+        </ion-card>
+        <ion-card *ngIf="alteracaoPreco.alteracoes && alteracaoPreco.alteracoes.length > 0">
+            <ion-card-content class="ion-no-padding">
+                <ion-grid>
+                    <ion-row>
+                        <ion-col size="7">Bico</ion-col>
+                        <ion-col size="3">Preço</ion-col>
+                        <ion-col size="2">Ação</ion-col>
+                    </ion-row>
+                    <ion-list>
+                        <ion-row *ngFor="let a of alteracaoPreco.alteracoes; let i = index"
+                                 class="negrito linha fullheight xc">
+                            <ion-col size="7">{{a.numero + '-' + a.combustivel}}</ion-col>
+                            <ion-col size="3">{{getPreco(a)}}</ion-col>
+                            <ion-col size="2">
+                                <ion-button color="danger" expand="block" size="small" (click)="remove(i)">
+                                    <ion-icon slot="icon-only" name="trash"></ion-icon>
+                                </ion-button>
+                            </ion-col>
+                        </ion-row>
+                    </ion-list>
+                </ion-grid>
+            </ion-card-content>
+        </ion-card>
+    </form>
+</ion-content>
+<ion-footer>
+    <ion-toolbar position="bottom">
+        <ion-button [disabled]="!alteracaoPreco.alteracoes || alteracaoPreco.alteracoes?.length < 1" fill="clear" expand="block"
+                    (click)="confirmar()">Agendar Alteração
+                    <ion-icon slot="start" name="calendar"></ion-icon>
+        </ion-button>
+    </ion-toolbar>
+</ion-footer>

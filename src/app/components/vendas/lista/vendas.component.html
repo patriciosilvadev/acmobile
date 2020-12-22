@@ -1,0 +1,81 @@
+<ion-header>
+    <ion-toolbar color="danger">
+        <ion-buttons slot="start">
+            <ion-back-button></ion-back-button>
+        </ion-buttons>
+        <ion-title>Vendas</ion-title>
+    </ion-toolbar>
+    <ion-toolbar *ngIf="global.usuario.clientes.length > 1"
+        class="negrito ion-text-center ion-no-padding tollbar-empresa ion-border">
+        <ion-select [interfaceOptions]="customActionSheetOptions" cancel-text="Voltar" [(ngModel)]="global.cnpj"
+            interface="action-sheet" (ngModelChange)="atualizaData(true)">
+            <ion-select-option *ngFor="let c of global.usuario.clientes" [value]="c.cnpj">
+                {{c.nomeFantasia.replace('(AC POSTO)', '')}}</ion-select-option>
+            <ion-select-option [value]="global.usuario.id">TODOS</ion-select-option>
+        </ion-select>
+    </ion-toolbar>
+    <ion-toolbar class="ion-no-padding" style="--border-width:0 0 0 0 !important;">
+        <ion-row class="ion-align-items-stretch">
+            <ion-col size="1" class="ion-no-padding">
+                <ion-button fill="clear" class="btn-troca" size="small" (click)="trocaData()">
+                    <ion-icon slot="icon-only" name="swap-horizontal-outline"></ion-icon>
+                </ion-button>
+            </ion-col>
+            <ion-col size="5" *ngIf="!global.dataTurno" class="ion-no-padding">
+                <ion-item lines="none">
+                    <ion-label position="stacked">Data Início:</ion-label>
+                    <ion-input readonly [(ngModel)]="global.dataInicio" [liIonic4Datepicker]="datePickerObj"
+                        (ionChange)="setaDataInicio()">
+                    </ion-input>
+                </ion-item>
+            </ion-col>
+            <ion-col size="6" *ngIf="!global.dataTurno" class="ion-no-padding">
+                <ion-item lines="none">
+                    <ion-label position="stacked">Data Fim:</ion-label>
+                    <ion-input readonly [(ngModel)]="global.dataFim" [liIonic4Datepicker]="datePickerObjFim">
+                    </ion-input>
+                    <ion-icon slot="end" name="search-outline" class="ion-padding-top btn-consulta"
+                        (click)="atualizaData(true)"></ion-icon>
+                </ion-item>
+            </ion-col>
+            <ion-col size="7" *ngIf="global.dataTurno" class="ion-no-padding">
+                <ion-item lines="none" style="margin-left: 50px">
+                    <ion-label position="stacked">Data Caixa:</ion-label>
+                    <ion-input readonly [(ngModel)]="global.data" [liIonic4Datepicker]="datePickerObj"
+                        (ionChange)="atualizaData(false)">
+                    </ion-input>
+                </ion-item>
+            </ion-col>
+            <ion-col size="4" *ngIf="global.dataTurno" class="ion-no-padding">
+                <ion-item lines="none">
+                    <ion-label position="stacked">Turno:</ion-label>
+                    <ion-select (ionChange)="atualiza()" [(ngModel)]="global.turno" interface="popover">
+                        <ion-select-option *ngFor="let t of global.listTurnos" [value]="t">{{t}}</ion-select-option>
+                        <ion-select-option *ngIf="global.listTurnos && global.listTurnos.length > 1" value="Todos">Todos
+                        </ion-select-option>
+                    </ion-select>
+                </ion-item>
+            </ion-col>
+        </ion-row>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <div class="segmento">
+        <ion-tabs>
+            <ion-tab-bar class="tabs" slot="top">
+                <ion-tab-button tab="vendasCTab">
+                    <ion-label>Combustíveis</ion-label>
+                </ion-tab-button>
+                <ion-tab-button tab="vendasFTab">
+                    <ion-label>Frentistas</ion-label>
+                </ion-tab-button>
+                <ion-tab-button tab="vendasPTab">
+                    <ion-label>Produtos</ion-label>
+                </ion-tab-button>
+                <ion-tab-button tab="vendasTTab">
+                    <ion-label>Totais</ion-label>
+                </ion-tab-button>
+            </ion-tab-bar>
+        </ion-tabs>
+    </div>
+</ion-content>

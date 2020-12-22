@@ -1,0 +1,20 @@
+- Subir o Projeto
+- Abrir a maquina virtual
+- Ir em Documents/acmobile
+- git restore . && git Pull
+- cordova plugin rm cordova-plugin-ionic-webview
+- cordova plugin add cordova-plugin-ionic-webview@4.1.0
+- ionic cordova platform remove ios
+- ionic cordova platform add ios@5.1.1
+- ionic cordova resources
+- ionic cordova build ios --release
+- abrir o xcode e abrir na pasta "paltform/ios"
+- Verificar icones
+- General -> Signing -> Setar Team "RG INFORMATICA LTDA"
+- Build Settings -> Code Signing Identify -> IOS Developer
+- Deletar Pricacy Contacts do Info.plist
+- Adicionar "Requer Permissao" no CAlendar do Info.plist (Windows + S para salvar)
+- Mude o Emulador para Generic IOS Device
+- Product -> Archive
+- Validate para ver se esta tudo Correto
+- Distribute App

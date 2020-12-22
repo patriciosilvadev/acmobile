@@ -1,0 +1,119 @@
+<ion-header>
+    <ion-toolbar color="danger">
+        <ion-buttons slot="start">
+            <ion-back-button></ion-back-button>
+        </ion-buttons>
+        <ion-title>Financeiro</ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <div class="fixed">
+        <ion-toolbar *ngIf="global.usuario.clientes.length > 1"
+            class="negrito ion-text-center ion-no-padding tollbar-empresa noback">
+            <ion-select [interfaceOptions]="customActionSheetOptions" cancel-text="Voltar" [(ngModel)]="global.cnpj"
+                interface="action-sheet" (ngModelChange)="ionViewDidEnter()">
+                <ion-select-option *ngFor="let c of global.usuario.clientes" [value]="c.cnpj">
+                    {{c.nomeFantasia.replace('(AC POSTO)', '')}}</ion-select-option>
+                <ion-select-option [value]="global.usuario.id">TODOS</ion-select-option>
+
+            </ion-select>
+        </ion-toolbar>
+        <div *ngIf="!listaContas">
+            <ion-item class="noback">
+                <ion-label>Sem contas a receber Hoje</ion-label>
+            </ion-item>
+        </div>
+        <div *ngIf="listaContas">
+            <ion-item lines="none" class="ion-no-padding negrito ion-text-center noback">
+                <ion-label class="titulo-data">Data: {{data | date : 'dd/MM/yyyy'}}</ion-label>
+            </ion-item>
+            <ion-row class="ion-justify-content-around">
+                <ion-card class="card-area">
+                    <div class="card-wrapper">
+                        <div class="card-verde justify">
+                            <ion-icon name="arrow-down"></ion-icon>
+                        </div>
+                        <div class="card-body">
+                            <ion-grid class="grid-card">
+                                <ion-row class="center">
+                                    <p class="title">Contas a receber</p>
+                                </ion-row>
+                                <ion-row class="center">
+                                    <p class="content-verde negrito">
+                                        {{totalReceber| currency:'BRL'}}
+                                    </p>
+                                </ion-row>
+                            </ion-grid>
+                        </div>
+                    </div>
+                </ion-card>
+                <ion-card class="card-area">
+                    <div class="card-wrapper">
+                        <div class="card-vermelho justify">
+                            <ion-icon name="arrow-up"></ion-icon>
+                        </div>
+                        <div class="card-body">
+                            <ion-grid class="grid-card">
+                                <ion-row class="center">
+                                    <p class="title">Contas a pagar</p>
+                                </ion-row>
+                                <ion-row class="center">
+                                    <p class="content-vermelho negrito">
+                                        {{totalPagar| currency:'BRL'}}
+                                    </p>
+                                </ion-row>
+                            </ion-grid>
+                        </div>
+                    </div>
+                </ion-card>
+            </ion-row>
+        </div>
+    </div>
+    <div class="corpo">
+        <ion-item lines="none" class="negrito ion-text-center">
+            <ion-label>Detalhamento</ion-label>
+        </ion-item>
+        <ion-card *ngIf="listaContasReceber && listaContasReceber.length > 0">
+            <ion-card-content class="ion-no-padding">
+                <ion-grid class="ion-text-center ion-no-padding">
+                    <ion-row class="negrito table-head-green" color="white">
+                        <ion-col size="6">A Receber</ion-col>
+                        <ion-col size="6">Valor</ion-col>
+                    </ion-row>
+                    <ion-list class="ion-no-padding">
+                        <ion-row *ngFor="let c of listaContasReceber"
+                            class="linha ion-no-margin ion-no-padding hoverable-table2">
+                            <ion-col size="6">{{c.descricao}}</ion-col>
+                            <ion-col size="6">{{c.valor | currency:'BRL'}}</ion-col>
+                        </ion-row>
+                        <ion-row class="negrito linha result-totais">
+                            <ion-col size="6">Total</ion-col>
+                            <ion-col size="6">{{totalReceber| currency:'BRL'}}</ion-col>
+                        </ion-row>
+                    </ion-list>
+                </ion-grid>
+            </ion-card-content>
+        </ion-card>
+        <ion-card *ngIf="listaContasPagar && listaContasPagar.length > 0">
+            <ion-card-content class="ion-no-padding">
+                <ion-grid class="ion-text-center ion-no-padding">
+                    <ion-row class="negrito table-head-red" color="white">
+                        <ion-col size="6">A Pagar</ion-col>
+                        <ion-col size="6">Valor</ion-col>
+                    </ion-row>
+                    <ion-list class="ion-no-padding">
+                        <ion-row *ngFor="let c of listaContasPagar"
+                            class="linha ion-no-margin ion-no-padding hoverable-table2">
+                            <ion-col size="6">{{c.descricao}}</ion-col>
+                            <ion-col size="6">{{c.valor | currency:'BRL'}}</ion-col>
+                        </ion-row>
+                        <ion-row class="negrito linha result-totais">
+                            <ion-col size="6">Total</ion-col>
+                            <ion-col size="6">{{totalPagar| currency:'BRL'}}</ion-col>
+                        </ion-row>
+                    </ion-list>
+                </ion-grid>
+            </ion-card-content>
+        </ion-card>
+    </div>
+</ion-content>

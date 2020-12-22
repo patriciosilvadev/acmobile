@@ -1,0 +1,72 @@
+<ion-header>
+    <ion-toolbar color="danger">
+        <ion-buttons slot="start">
+            <ion-back-button></ion-back-button>
+        </ion-buttons>
+        <ion-title>Criar Conta</ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-content padding>
+    <form #contaForm="ngForm" autocomplete="off">
+        <ion-card>
+            <ion-card-header>
+                <ion-card-title>Dados Usuário</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+                <ion-item>
+                    <ion-icon name="person" slot="start"></ion-icon>
+                    <ion-input name="email" email [(ngModel)]="usuario.login" placeholder="Email" type="email" required
+                        [disabled]="usuario.id"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-icon name="key" slot="start"></ion-icon>
+                    <ion-input name="senha" [(ngModel)]="usuario.senha" placeholder="Senha" type="password" required>
+                    </ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-icon name="key" slot="start"></ion-icon>
+                    <ion-input name="confirmacaoSenha" [(ngModel)]="usuario.confirmaSenha"
+                        placeholder="Confirme a senha" type="password" required></ion-input>
+                </ion-item>
+            </ion-card-content>
+        </ion-card>
+        <ion-card>
+            <ion-card-header>
+                <ion-card-title>Cnpj Postos</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+                <ion-item>
+                    <ion-input name="cnpj" [(ngModel)]="usuario.cnpj" placeholder="Cnpj"
+                        [brmasker]="{mask:'00.000.000/0000-00', type : 'num', len:18}" type="tel"></ion-input>
+                    <ion-button color="success" slot="end" (click)="addCnpj()" [disabled]="usuario.cnpj?.length != 18">
+                        <ion-icon slot="icon-only" name="add"></ion-icon>
+                    </ion-button>
+                </ion-item>
+                <ion-item *ngFor="let c of usuario.listaCnpj; let i = index">
+                    <ion-label>{{c}}</ion-label>
+                    <ion-button color="danger" slot="end" (click)="removeCnpj(i)">
+                        <ion-icon slot="icon-only" name="trash"></ion-icon>
+                    </ion-button>
+                </ion-item>
+            </ion-card-content>
+        </ion-card>
+
+        <ion-grid>
+            <ion-row>
+                <ion-col width-50>
+                    <ion-button color="danger" (click)="cancelar()" fill="clear" expand="block">
+                        <ion-icon slot="start" name="close"></ion-icon>
+                        Cancelar
+                    </ion-button>
+                </ion-col>
+                <ion-col width-50>
+                    <ion-button (click)="registrar()" expand="block" fill="clear" color="success"
+                        [disabled]="!contaForm.form.valid">
+                        <ion-icon slot="start" name="checkmark"></ion-icon>
+                        {{usuario.id ? 'Salvar' : 'Registrar'}}
+                    </ion-button>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </form>
+</ion-content>

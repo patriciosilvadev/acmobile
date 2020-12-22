@@ -1,0 +1,50 @@
+ion-menu.sidebar-menu{
+  font-family: "Roboto", sans-serif !important;
+}
+
+ion-toolbar.head-menu{
+  padding: 10px 0;
+}
+
+ion-icon {
+  font-size: 25px;
+}
+
+.negrito{
+  font-weight: bold !important;
+}
+
+.linha-menu{
+  border-bottom: 0.5px solid #ccc;
+}
+
+.total{
+  font-size: 16px;
+}
+
+.text{
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.toolbar-background {
+  --ion-background-color: #D5021A;
+}
+
+.toolbar-title-md {
+  color: white;
+}
+
+.bar-button-default-md {
+  color: white;
+}
+
+.botoes-menu-sidebar{
+  padding-top: 0;
+}
+
+.botoes-menu-sidebar ion-item{
+  --padding-start: 25px !important;
+  --min-height: 45px !important;
+  letter-spacing: 1px !important;
+}

@@ -1,0 +1,4 @@
+- Alterado Criação de Usuário para Multiplos Clientes
+- Login automatico, após primeiro login efetuado com sucesso.
+- Reformulado todas as telas (Menos Estoque) para ter o Controle por empresa.
+- Alterado Siglas de Etanol Comun e Etanol Aditivado para EC e EA respectivamente. (Deve ser alterado no AC Posto - Conusltar Samuel/Denilson)

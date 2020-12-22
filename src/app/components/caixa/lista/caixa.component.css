@@ -1,0 +1,106 @@
+.verde {
+  color: darkgreen;
+}
+
+.vermelho {
+  color: darkred;
+}
+
+.titulo {
+  font-size: 20px;
+}
+
+.titulo-fecha {
+  font-size: 14px;
+}
+
+ion-row.table-row{
+  padding: 5px 7px !important;
+}
+
+ion-row.acc-row{
+  padding: 5px 15px !important;
+}
+
+.hoverable-table2{
+  color: rgb(40, 40, 40) !important;
+}
+
+.hoverable-table2:nth-child(2n+1){
+  background: rgb(240, 240, 240);
+}
+
+.section {
+  --background: #fff;
+  width: 100%;
+  color: #000;
+}
+
+.separa {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+/* PROPRIEDADES COMUNS */
+ion-card {
+  margin: 15px 10px 0 10px;
+}
+
+ion-item {
+  --min-height: 28px;
+}
+
+ion-card-header {
+  padding: 5px 7px;
+  width: 100%;
+}
+
+ion-col {
+  padding: 3px 0;
+}
+
+.detalhamento {
+  font-size: 20px;
+}
+
+.fixed {
+  width: 100%;
+  height: 230px;
+  position: fixed;
+  background: linear-gradient(180deg, #ffffff 0%, rgba(240, 240, 240, 0.4) 100%),
+    #eeeeee !important;
+  box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2),
+    0 4px 4px 0px rgba(0, 0, 0, 0.14), 0 1px 10px 0px rgba(0, 0, 0, 0.12);
+  border-radius: 0 0 25px 25px;
+  z-index: 888;
+}
+
+.corpo {
+  position: relative;
+  top: 240px;
+}
+
+ion-item.item-title {
+  --inner-padding-end: 0px;
+  --padding-start: 0px;
+  padding: 0 7px !important;
+}
+
+.separa .valor {
+  font-size: 14px;
+  font-weight: bold;
+  color: green;
+  margin-right: 5px;
+}
+
+/* PROPS RESPONSIVE SCREEN */
+@media screen and (min-width: 360px) {
+  ion-row p.content-vermelho {
+    font-size: 16px !important;
+  }
+
+  ion-row p.content-verde {
+    font-size: 16px !important;
+  }
+}
